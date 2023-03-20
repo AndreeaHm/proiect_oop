@@ -5,7 +5,7 @@
 #include <cstring>
 #include <ctime>
 
-std::srand(time(NULL));
+//std::srand(time(NULL));
 
 class Tara{
     std::string nume;
@@ -121,7 +121,7 @@ public:
     }
 
     void joaca(Joc &joc) {
-        for(const auto &juc : joc.j){
+        for(auto &juc : joc.j){
             std::string nume = juc.getNume();
             std::cout << "Jucatorul " << nume << std::endl;
             int nrr = juc.getNrRunde();
