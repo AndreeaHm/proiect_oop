@@ -4,21 +4,22 @@
 #include <cstdlib>
 #include <cstring>
 #include <ctime>
+#include <fstream>
 
-//std::srand(time(NULL));
+std::ifstream fin("tastatura.txt");
 
 class Tara{
-    std::string nume;
-    std::string capitala;
+    std::string numetara;
+    std::string capitalatara;
 public:
-    Tara(const std::string& nume_, const std::string& capitala_): nume(nume_), capitala(capitala_){}
-    Tara(const Tara& other): nume(other.nume), capitala(other.capitala) {
+    Tara(const std::string& numetara_, const std::string& capitalatara_): numetara(numetara_), capitalatara(capitalatara_){}
+    Tara(const Tara& other): numetara(other.numetara), capitalatara(other.capitalatara) {
         //std::cout <<"constr de copiere\n";
     }
     Tara& operator=(const Tara& other) {
         //std::cout <<"op = tara\n";
-        nume = other.nume;
-        capitala = other.capitala;
+        numetara = other.numetara;
+        capitalatara = other.capitalatara;
         return *this;
     }
 
@@ -27,71 +28,71 @@ public:
     }
 
     friend std::ostream &operator<<(std::ostream &os, const Tara &tara) {
-        os << "nume: " << tara.nume << " capitala: " << tara.capitala;
+        os << "nume: " << tara.numetara << " capitala: " << tara.capitalatara;
         return os;
     }
 
     const std::string &getNume() const {
-        return nume;
+        return numetara;
     }
 
     const std::string &getCapitala() const {
-        return capitala;
+        return capitalatara;
     }
 };
 
 class Jucator{
-    std::string nume;
-    int scor;
-    int nr_runde;
+    std::string numejuc;
+    int scorjuc;
+    int nr_rundejuc;
 public:
-    Jucator(const std::string& nume_, const int scor_, const int nr_runde_ = 0): nume(nume_), scor(scor_), nr_runde(nr_runde_){}
-    Jucator(const Jucator& other): nume(other.nume), scor(other.scor), nr_runde(other.nr_runde) {}
+    Jucator(const std::string& numejuc_, const int scorjuc_, const int nr_rundejuc_ = 0): numejuc(numejuc_), scorjuc(scorjuc_), nr_rundejuc(nr_rundejuc_){}
+    Jucator(const Jucator& other): numejuc(other.numejuc), scorjuc(other.scorjuc), nr_rundejuc(other.nr_rundejuc) {}
     ~Jucator() {}
 
     friend std::ostream &operator<<(std::ostream &os, const Jucator &jucator) {
-        os << "nume: " << jucator.nume << " scor: " << jucator.scor << " nr_runde: " << jucator.nr_runde;
+        os << "nume: " << jucator.numejuc << " scor: " << jucator.scorjuc << " nr_runde: " << jucator.nr_rundejuc;
         return os;
     }
 
     const std::string &getNume() const {
-        return nume;
+        return numejuc;
     }
 
     int getScor() const {
-        return scor;
+        return scorjuc;
     }
 
-    void crestere_scor () {
-        scor = scor + 10;
+    void crestere_scor (int pnct) {
+        scorjuc = scorjuc + pnct;
     }
 
 
     int getNrRunde() const {
-        return nr_runde;
+        return nr_rundejuc;
     }
 };
 
 class Joc {
     std::vector<Tara> tarajuc;
-    std::vector<Jucator> j;
+    std::vector<Jucator> juc;
 
 public:
     Joc() = default;
 
-    Joc(const std::vector<Tara> &tarajuc_, const std::vector<Jucator> &j_) :
-            tarajuc(tarajuc_), j(j_) {}
+    Joc(const std::vector<Tara> &tarajuc_, const std::vector<Jucator> &juc_) :
+            tarajuc(tarajuc_), juc(juc_) {}
 
     Joc(const Joc &other) :
-            tarajuc(other.tarajuc), j(other.j) {}
+            tarajuc(other.tarajuc), juc(other.juc) {}
 
     Joc(Joc &&other) noexcept:
-            tarajuc(std::move(other.tarajuc)), j(std::move(other.j)) {}
+            tarajuc(std::move(other.tarajuc)), juc(std::move(other.juc)) {}
 
     Joc &operator=(const Joc &other) {
         if (this != &other) {
             tarajuc = other.tarajuc;
-            j = other.j;
+            juc = other.juc;
         }
         return *this;
     }
@@ -99,7 +100,7 @@ public:
     Joc &operator=(Joc &&other) noexcept {
         if (this != &other) {
             tarajuc = std::move(other.tarajuc);
-            j = std::move(other.j);
+            juc = std::move(other.juc);
         }
         return *this;
     }
@@ -110,21 +111,21 @@ public:
             os << tr << std::endl;
         }
         os << "juc:" << std::endl;
-        for (const auto &juc: joc.j) {
-            os << juc << std::endl;
+        for (const auto &juctr: joc.juc) {
+            os << juctr << std::endl;
         }
         return os;
     }
 
     void adauga_jucator(const Jucator &jucator) {
-        j.push_back(jucator);
+        juc.push_back(jucator);
     }
 
     void joaca(Joc &joc) {
-        for(auto &juc : joc.j){
-            std::string nume = juc.getNume();
+        for(auto juctr : joc.juc){
+            std::string nume = juctr.getNume();
             std::cout << "Jucatorul " << nume << std::endl;
-            int nrr = juc.getNrRunde();
+            int nrr = juctr.getNrRunde();
             for(int i=1; i<=nrr; i++) {
                 int random_index = std::rand() % joc.tarajuc.size();
                 std::string tara = joc.tarajuc[random_index].getNume();
@@ -132,24 +133,30 @@ public:
                 std::cout << "Tara este: " << tara << std::endl;
                 std::cout << "Capitala este: ";
                 std::string raspuns;
-                std::cin >> raspuns;
+                fin >> raspuns;
+                std::cout << raspuns << std::endl;
                 if (raspuns == capitala) {
                     std::cout << "Felicitari, " << nume << "! Ai ghicit capitala tarii " << tara << "." << std::endl;
-                    juc.crestere_scor();}
+                    juctr.crestere_scor(10);}
                 else {
                     std::cout << "Imi pare rau, " << nume << ", dar capitala tarii " << tara << " este " << capitala
                               << "."
                               << std::endl;
+                    juctr.crestere_scor(-10);
                 }
                 std::cout << std::endl;
             }
-            int scor = juc.getScor();
+            int scor = juctr.getScor();
             std::cout<< "Scorul lui " << nume << " este " << scor << std::endl;
         }
     }
 };
 
+
+
 int main(){
+    std::srand(time(nullptr));
+
     Jucator p1("Ion", 0, 2);
     Jucator p2("Ana", 0,4);
     Jucator p3("Florica", 0,3);
@@ -181,6 +188,7 @@ int main(){
 
     j1.joaca(j1);
 
+    fin.close();
 
     return 0;
 }
