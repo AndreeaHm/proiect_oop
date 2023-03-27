@@ -5,6 +5,7 @@
 #include <cstring>
 #include <ctime>
 #include <fstream>
+#include <algorithm>
 
 std::ifstream fin("tastatura.txt");
 
@@ -123,11 +124,17 @@ public:
 
     void joaca(Joc &joc) {
         for(auto juctr : joc.juc){
+            int random_nr[20];
+            for(int k=1; k<=tarajuc.size(); k++)
+                random_nr[k] = 0;
+            for(int k=1; k<=tarajuc.size(); k++)
+                random_nr[k] = k;
+            std::random_shuffle(&random_nr[1],&random_nr[tarajuc.size()]);
             std::string nume = juctr.getNume();
             std::cout << "Jucatorul " << nume << std::endl;
             int nrr = juctr.getNrRunde();
             for(int i=1; i<=nrr; i++) {
-                int random_index = std::rand() % joc.tarajuc.size();
+                int random_index = random_nr[i];
                 std::string tara = joc.tarajuc[random_index].getNume();
                 std::string capitala = joc.tarajuc[random_index].getCapitala();
                 std::cout << "Tara este: " << tara << std::endl;
@@ -156,6 +163,7 @@ public:
 
 int main(){
     std::srand(time(nullptr));
+
 
     Jucator p1("Ion", 0, 2);
     Jucator p2("Ana", 0,4);
