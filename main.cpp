@@ -8,6 +8,7 @@
 #include <algorithm>
 
 std::ifstream fin("tastatura.txt");
+std::ifstream f("input.in");
 
 class Tara{
     std::string numetara;
@@ -40,6 +41,12 @@ public:
     const std::string &getCapitala() const {
         return capitalatara;
     }
+    /*void adauga_tara(char tr){
+        numetara.push_back(tr);
+    }
+    void adauga_capitala(char cp){
+        capitalatara.push_back(cp);
+    }*/
 };
 
 class Jucator{
@@ -77,23 +84,25 @@ public:
 class Joc {
     std::vector<Tara> tarajuc;
     std::vector<Jucator> juc;
+    std::vector<std::string> raspunsuri;
 
 public:
     Joc() = default;
 
-    Joc(const std::vector<Tara> &tarajuc_, const std::vector<Jucator> &juc_) :
-            tarajuc(tarajuc_), juc(juc_) {}
+    Joc(const std::vector<Tara> &tarajuc_, const std::vector<Jucator> &juc_, const std::vector<std::string> &raspunsuri_) :
+            tarajuc(tarajuc_), juc(juc_), raspunsuri(raspunsuri_) {}
 
     Joc(const Joc &other) :
-            tarajuc(other.tarajuc), juc(other.juc) {}
+            tarajuc(other.tarajuc), juc(other.juc) , raspunsuri(other.raspunsuri) {}
 
     Joc(Joc &&other) noexcept:
-            tarajuc(std::move(other.tarajuc)), juc(std::move(other.juc)) {}
+            tarajuc(std::move(other.tarajuc)), juc(std::move(other.juc)), raspunsuri(std::move(other.raspunsuri)) {}
 
     Joc &operator=(const Joc &other) {
         if (this != &other) {
             tarajuc = other.tarajuc;
             juc = other.juc;
+            raspunsuri = other.raspunsuri;
         }
         return *this;
     }
@@ -102,6 +111,7 @@ public:
         if (this != &other) {
             tarajuc = std::move(other.tarajuc);
             juc = std::move(other.juc);
+            raspunsuri = std::move(other.raspunsuri);
         }
         return *this;
     }
@@ -115,6 +125,10 @@ public:
         for (const auto &juctr: joc.juc) {
             os << juctr << std::endl;
         }
+        os << "rasp:" << std::endl;
+        for(const auto &rsps: joc.raspunsuri){
+            os << rsps << std::endl;
+        }
         return os;
     }
 
@@ -122,25 +136,31 @@ public:
         juc.push_back(jucator);
     }
 
-    void joaca(Joc &joc) {
+    void joaca(Joc &joc){
         for(auto juctr : joc.juc){
-            int random_nr[20];
+            int random_nr[50];
             for(int k=1; k<=tarajuc.size(); k++)
                 random_nr[k] = 0;
             for(int k=1; k<=tarajuc.size(); k++)
                 random_nr[k] = k;
             std::random_shuffle(&random_nr[1],&random_nr[tarajuc.size()]);
+            int random_rsp[50];
+            for(int k=1; k<=raspunsuri.size(); k++)
+                random_rsp[k] = 0;
+            for(int k=1; k<=raspunsuri.size(); k++)
+                random_rsp[k] = k;
+            std::random_shuffle(&random_rsp[1],&random_rsp[raspunsuri.size()]);
             std::string nume = juctr.getNume();
             std::cout << "Jucatorul " << nume << std::endl;
             int nrr = juctr.getNrRunde();
             for(int i=1; i<=nrr; i++) {
                 int random_index = random_nr[i];
+                int random_r = random_rsp[1];
                 std::string tara = joc.tarajuc[random_index].getNume();
                 std::string capitala = joc.tarajuc[random_index].getCapitala();
                 std::cout << "Tara este: " << tara << std::endl;
                 std::cout << "Capitala este: ";
-                std::string raspuns;
-                fin >> raspuns;
+                std::string raspuns = joc.raspunsuri[random_r];
                 std::cout << raspuns << std::endl;
                 if (raspuns == capitala) {
                     std::cout << "Felicitari, " << nume << "! Ai ghicit capitala tarii " << tara << "." << std::endl;
@@ -169,34 +189,29 @@ int main(){
     Jucator p2("Ana", 0,4);
     Jucator p3("Florica", 0,3);
 
-    Tara t1("Spania", "Madrid");
-    Tara t2("Slovacia", "Bratislava");
-    Tara t3("Danemarca", "Copenhaga");
-    Tara t4("Grecia", "Atena");
-    Tara t5("Olanda", "Amsterdam");
-    Tara t6("Finlanda", "Helsinki");
-    Tara t7("Serbia", "Belgrad");
-    Tara t8("Islanda", "Reykjavik");
-    Tara t9("Liechtenstein", "Vaduz");
-    Tara t10("Belarus", "Minsk");
-
     std::vector<Tara> tari;
     std::vector<Jucator> jucatori;
+    std::vector<std::string> raspunsurile;
 
-    tari.push_back(t7);
-    tari.push_back(t3);
-    tari.push_back(t10);
-    tari.push_back(t8);
-    tari.push_back(t4);
+    for(int i=1; i<=44; i++){
+        std::string sir1;
+        std::string sir2;
+        std::string rasp;
+        f >> sir1 >> sir2;
+        fin >> rasp;
+        Tara t(sir1, sir2);
+        tari.push_back(t);
+        raspunsurile.push_back(rasp);
+    }
 
-
-    Joc j1(tari, jucatori);
+    Joc j1(tari, jucatori,raspunsurile);
     j1.adauga_jucator(p3);
     j1.adauga_jucator(p1);
 
     j1.joaca(j1);
 
     fin.close();
+    f.close();
 
     return 0;
 }
