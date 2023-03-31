@@ -41,12 +41,6 @@ public:
     const std::string &getCapitala() const {
         return capitalatara;
     }
-    /*void adauga_tara(char tr){
-        numetara.push_back(tr);
-    }
-    void adauga_capitala(char cp){
-        capitalatara.push_back(cp);
-    }*/
 };
 
 class Jucator{
