@@ -139,13 +139,15 @@ public:
                 random_nr[k] = 0;}
             for(unsigned long k=1; k<=tarajuc.size(); k++){
                 random_nr[k] = k;}
-            std::shuffle(&random_nr[1],&random_nr[tarajuc.size()], rand()%tarajuc.size());
+            std::random_device rd;
+            std::mt19937 g(rd());
+            std::shuffle(random_nr + 1, random_nr + tarajuc.size(), g);
             int random_rsp[50];
             for(unsigned long k=1; k<=raspunsuri.size(); k++)
                 random_rsp[k] = 0;
             for(unsigned long k=1; k<=raspunsuri.size(); k++)
                 random_rsp[k] = k;
-            std::shuffle(&random_rsp[1],&random_rsp[raspunsuri.size()], rand()%raspunsuri.size());
+            std::shuffle(&random_rsp[1],&random_rsp[raspunsuri.size()], g);
             std::string nume = juctr.getNume();
             std::cout << "Jucatorul " << nume << std::endl;
             int nrr = juctr.getNrRunde();
