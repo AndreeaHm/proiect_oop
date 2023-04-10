@@ -139,9 +139,9 @@ public:
                 random_nr[k] = k;
             std::random_shuffle(&random_nr[1],&random_nr[tarajuc.size()]);
             int random_rsp[50];
-            for(int k=1; k<=raspunsuri.size(); k++)
+            for(unsigned long k=1; k<=raspunsuri.size(); k++)
                 random_rsp[k] = 0;
-            for(int k=1; k<=raspunsuri.size(); k++)
+            for(unsigned long k=1; k<=raspunsuri.size(); k++)
                 random_rsp[k] = k;
             std::random_shuffle(&random_rsp[1],&random_rsp[raspunsuri.size()]);
             std::string nume = juctr.getNume();
