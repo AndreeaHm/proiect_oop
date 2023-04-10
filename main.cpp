@@ -133,9 +133,9 @@ public:
     void joaca(Joc &joc){
         for(auto juctr : joc.juc){
             int random_nr[50];
-            for(int k=1; k<=tarajuc.size(); k++)
+            for(unsigned long k=1; k<=tarajuc.size(); k++)
                 random_nr[k] = 0;
-            for(int k=1; k<=tarajuc.size(); k++)
+            for(unsigned long k=1; k<=tarajuc.size(); k++)
                 random_nr[k] = k;
             std::random_shuffle(&random_nr[1],&random_nr[tarajuc.size()]);
             int random_rsp[50];
