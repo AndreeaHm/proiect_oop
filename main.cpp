@@ -6,6 +6,7 @@
 #include <ctime>
 #include <fstream>
 #include <algorithm>
+#include <random>
 
 std::ifstream fin("tastatura.txt");
 std::ifstream f("input.in");
@@ -130,20 +131,21 @@ public:
         juc.push_back(jucator);
     }
 
+
     void joaca(Joc &joc){
         for(auto juctr : joc.juc){
             int random_nr[50];
-            for(unsigned long k=1; k<=tarajuc.size(); k++)
-                random_nr[k] = 0;
-            for(unsigned long k=1; k<=tarajuc.size(); k++)
-                random_nr[k] = k;
-            std::random_shuffle(&random_nr[1],&random_nr[tarajuc.size()]);
+            for(unsigned long k=1; k<=tarajuc.size(); k++){
+                random_nr[k] = 0;}
+            for(unsigned long k=1; k<=tarajuc.size(); k++){
+                random_nr[k] = k;}
+            std::shuffle(&random_nr[1],&random_nr[tarajuc.size()], rand()%tarajuc.size());
             int random_rsp[50];
             for(unsigned long k=1; k<=raspunsuri.size(); k++)
                 random_rsp[k] = 0;
             for(unsigned long k=1; k<=raspunsuri.size(); k++)
                 random_rsp[k] = k;
-            std::random_shuffle(&random_rsp[1],&random_rsp[raspunsuri.size()]);
+            std::shuffle(&random_rsp[1],&random_rsp[raspunsuri.size()], rand()%raspunsuri.size());
             std::string nume = juctr.getNume();
             std::cout << "Jucatorul " << nume << std::endl;
             int nrr = juctr.getNrRunde();
