@@ -1,4 +1,4 @@
-# OOP Template
+# Proiect OOP
 
 ### Tema 0
 
