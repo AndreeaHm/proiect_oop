@@ -2,8 +2,8 @@
 
 ### Tema 0
 
-- [ ] Nume proiect (poate fi schimbat ulterior)
-- [ ] Scurtă descriere a temei alese, ce v-ați propus să implementați
+- [ ] Nume proiect - capitals fun
+- [ ] Un joc de geografie unde capitala trebuie asociata tarii corecte
 
 ## Tema 1
 
