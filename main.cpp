@@ -153,7 +153,7 @@ public:
             int nrr = juctr.getNrRunde();
             for(int i=1; i<=nrr; i++) {
                 int random_index = random_nr[i];
-                int random_r = random_rsp[1];
+                int random_r = random_rsp[i];
                 std::string tara = joc.tarajuc[random_index].getNume();
                 std::string capitala = joc.tarajuc[random_index].getCapitala();
                 std::cout << "Tara este: " << tara << std::endl;
