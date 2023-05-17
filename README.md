@@ -1,8 +1,8 @@
-# Proiect OOP
+# Georaphy Now
 
 ### Tema 0
 
-- [ ] Nume proiect - capitals fun
+- [ ] Nume proiect
 - [ ] Un joc de geografie unde capitala trebuie asociata tarii corecte
 
 ## Tema 1
