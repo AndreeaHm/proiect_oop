@@ -42,3 +42,12 @@ int Jucator::getNrJoc() const {
 int Jucator::getNivelDific() const {
     return nivel_dific;
 }
+
+Jucator& Jucator::operator=(const Jucator& other) {
+    if (this != &other) {
+        // Perform member-wise assignment
+        Entitate::operator=(other);
+        // Additional assignment for Jucator-specific members, if any
+    }
+    return *this;
+}

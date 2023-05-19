@@ -6,7 +6,7 @@
 #include <string>
 
 class Jucator : public Entitate {
-    static int scor; // Static attribute
+    static int scor;
     int nr_runde;
     int nr_joc;
     int nivel_dific;
@@ -23,6 +23,8 @@ public:
     [[nodiscard]] int getNrRunde() const;
     [[nodiscard]] int getNrJoc() const;
     [[nodiscard]] int getNivelDific() const;
+
+    Jucator& operator=(const Jucator& other);
 };
 
 #endif // PRJCT_OOP_JUCATOR_H
