@@ -155,4 +155,8 @@ void Joc::joaca(Joc& joc) {
     }
 }
 
-Joc::~Joc() {}
+Joc::~Joc() {
+    for (auto* continent : continente) {
+        delete continent;
+    }
+}
