@@ -12,11 +12,11 @@ protected:
     std::string nume;
 
 public:
-    explicit Entitate(const std::string& nume_);
+    explicit Entitate(std::string  nume_);
     Entitate(const Entitate& other);
     virtual ~Entitate();
 
-    const std::string& getNume() const;
+    [[nodiscard]] const std::string& getNume() const;
 };
 
 #endif //PRJCT_OOP_ENTITATE_H

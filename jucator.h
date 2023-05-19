@@ -14,15 +14,15 @@ class Jucator : public Entitate {
 public:
     Jucator(const std::string& numejuc_, int nr_rundejuc_, int nr_joc_, int nivel_dific_);
     Jucator(const Jucator& other);
-    ~Jucator();
+    ~Jucator() override;
 
     friend std::ostream& operator<<(std::ostream& os, const Jucator& jucator);
 
     static int getScor();
-    void crestere_scor(int pnct);
-    int getNrRunde() const;
-    int getNrJoc() const;
-    int getNivelDific() const;
+    static void crestere_scor(int pnct);
+    [[nodiscard]] int getNrRunde() const;
+    [[nodiscard]] int getNrJoc() const;
+    [[nodiscard]] int getNivelDific() const;
 };
 
 #endif // PRJCT_OOP_JUCATOR_H

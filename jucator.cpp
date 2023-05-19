@@ -16,7 +16,7 @@ Jucator::~Jucator() {}
 
 std::ostream& operator<<(std::ostream& os, const Jucator& jucator) {
     os << "Nume jucator: " << jucator.nume << "\n";
-    os << "Scor: " << jucator.scor << "\n";
+    os << "Scor: " << Jucator::scor << "\n";
     os << "Numar runde jucate: " << jucator.nr_runde << "\n";
     os << "Numar joc: " << jucator.nr_joc << "\n";
     os << "Nivel dificultate: " << jucator.nivel_dific << "\n";

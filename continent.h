@@ -19,7 +19,7 @@ class Continent {
     [[maybe_unused]] int niv_dif;
 
 public:
-    Continent(const std::string &nume_, std::vector<Tara *> tari_, const int niv_dif_);
+    Continent(const std::string &nume_, std::vector<Tara *> tari_, int niv_dif_);
     ~Continent();
 
     void adaugaTara(Tara* tara);

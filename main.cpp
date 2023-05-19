@@ -21,7 +21,7 @@ int main() {
     std::vector<std::string> raspunsurile;
     std::vector<Continent*> continentele;
 
-    Continent* europa = new Continent("Europa", tari, 1);
+    auto* europa = new Continent("Europa", tari, 1);
 
     for (int i = 1; i <= 37; i++) {
         std::string nume_tara;
@@ -46,7 +46,7 @@ int main() {
     j1.adauga_jucator(p1);
     j1.adaugaContinent(*europa);
 
-    j1.joaca(j1);
+    Joc::joaca(j1);
 
     fin.close();
     f.close();

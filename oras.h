@@ -15,11 +15,11 @@ class Oras : public Entitate {
 public:
     Oras(const std::string& name_, int population_);
     Oras(const Oras& other);
-    ~Oras();
+    ~Oras() override;
 
     friend std::ostream& operator<<(std::ostream& os, const Oras& oras);
 
-    int getPopulation() const;
+    [[nodiscard]] int getPopulation() const;
 };
 
 #endif //PRJCT_OOP_ORAS_H

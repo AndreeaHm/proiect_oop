@@ -40,7 +40,7 @@ public:
 
     void adaugaContinent(const Continent& continentu);
 
-    void joaca(Joc &joc);
+    static void joaca(Joc &joc);
 
     ~Joc();
 };

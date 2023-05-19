@@ -5,7 +5,7 @@
 #include "joc.h"
 #include "exceptii.h"
 #include <random>
-#include <algorithm>
+//#include <algorithm>
 #include <iostream>
 
 Joc::Joc() = default;
@@ -116,9 +116,9 @@ void Joc::joaca(Joc& joc) {
                 }
             } else if (jocul_ales == 2) {
                 for (int i = 0; i < nrr; i++) {
-                    if (i >= tarajuc.size()) {
+                    if (i >= tarajuc.size())
                         break;
-                    }
+
                     int random_index = i;
                     Tara* tara_curenta = tarajuc[random_index]->clone();
                     std::string nume_tara_curenta = tara_curenta->getNume();
@@ -140,7 +140,7 @@ void Joc::joaca(Joc& joc) {
                     std::cout << std::endl;
                 }
             }
-            int scor = juctr.getScor();
+            int scor = Jucator::getScor();
             std::cout << "Scorul lui " << nume << " este " << scor << std::endl;
         }
     } catch (const exceptie1& e) {

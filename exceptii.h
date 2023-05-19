@@ -13,7 +13,7 @@ class exceptie1 : public std::exception {
 public:
     explicit exceptie1(const std::string& message);
 
-    const char* what() const noexcept override;
+    [[nodiscard]] const char* what() const noexcept override;
 };
 
 class exceptie2 : public std::exception {
@@ -21,7 +21,7 @@ class exceptie2 : public std::exception {
 public:
     explicit exceptie2(const std::string& message);
 
-    const char* what() const noexcept override;
+    [[nodiscard]] const char* what() const noexcept override;
 };
 
 #endif //PRJCT_OOP_EXCEPTII_H

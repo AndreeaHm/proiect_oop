@@ -4,7 +4,7 @@
 
 #include "tara.h"
 
-Tara::Tara(const std::string& numetara_, const std::string& capitalatara_, const std::vector<std::shared_ptr<Oras>> orase_)
+Tara::Tara(const std::string& numetara_, const std::string& capitalatara_, const std::vector<std::shared_ptr<Oras>>& orase_)
         : Entitate(numetara_), capitala(capitalatara_) {
     for (const auto& oras : orase_) {
         orase.push_back(std::make_shared<Oras>(*oras));
