@@ -12,7 +12,7 @@ protected:
     std::string nume;
 
 public:
-    Entitate(const std::string& nume_);
+    explicit Entitate(const std::string& nume_);
     Entitate(const Entitate& other);
     virtual ~Entitate();
 

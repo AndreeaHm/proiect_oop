@@ -13,7 +13,7 @@ class Tara : public Entitate {
     std::vector<std::shared_ptr<Oras>> orase;
 
 public:
-    Tara(const std::string& numetara_, const std::string& capitalatara_, const std::vector<std::shared_ptr<Oras>> orase_);
+    Tara(const std::string& numetara_, const std::string& capitalatara_, std::vector<std::shared_ptr<Oras>> orase_);
     Tara(const Tara& other);
     Tara& operator=(Tara other);
     ~Tara();

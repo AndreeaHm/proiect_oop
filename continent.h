@@ -7,7 +7,7 @@
 
 #include <string>
 #include <vector>
-#include "Tara.h"
+#include "tara.h"
 
 #include <string>
 #include <vector>
@@ -16,17 +16,17 @@
 class Continent {
     std::string nume;
     std::vector<Tara*> tari;
-    int niv_dif;
+    [[maybe_unused]] int niv_dif;
 
 public:
-    Continent(const std::string &nume_, std::vector<Tara *> vector, const int niv_dif_);
+    Continent(const std::string &nume_, std::vector<Tara *> tari_, const int niv_dif_);
     ~Continent();
 
     void adaugaTara(Tara* tara);
 
-    const std::string& getNumecont() const;
-    const std::vector<Tara*>& getTari() const;
-    const int getNivdif() const;
+    [[nodiscard]] const std::string& getNumecont() const;
+    [[nodiscard]] const std::vector<Tara*>& getTari() const;
+    //[[nodiscard]]  int getNivdif() const;
 };
 
 #endif //PRJCT_OOP_CONTINENT_H

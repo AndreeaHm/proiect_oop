@@ -2,11 +2,13 @@
 // Created by Andreea on 13-May-23.
 //
 
+#include <utility>
+
 #include "Continent.h"
 
 Continent::Continent(const std::string &nume_, std::vector<Tara *> tari_, const int niv_dif_) {
     nume = nume_;
-    tari = tari_;
+    tari = std::move(tari_);
     niv_dif = niv_dif_;
 }
 
@@ -32,6 +34,6 @@ const std::vector<Tara*>& Continent::getTari() const {
     return tari;
 }
 
-const int Continent::getNivdif() const {
+/*const int Continent::getNivdif() const {
     return niv_dif;
-}
+}*/
