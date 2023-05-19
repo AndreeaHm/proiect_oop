@@ -13,7 +13,7 @@ protected:
 
 public:
     explicit Entitate(std::string  nume_);
-    Entitate(const Entitate& other);
+    //Entitate(const Entitate& other) [[maybe_unused]];
     virtual ~Entitate();
 
     [[nodiscard]] const std::string& getNume() const;

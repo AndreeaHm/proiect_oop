@@ -8,7 +8,7 @@
 
 Entitate::Entitate(std::string  nume_): nume(std::move(nume_)) {}
 
-Entitate::Entitate(const Entitate& other): nume(other.nume) {}
+//Entitate::Entitate(const Entitate& other): nume(other.nume) {}
 
 Entitate::~Entitate() {}
 
