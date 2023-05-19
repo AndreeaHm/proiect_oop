@@ -19,7 +19,7 @@ public:
 
     friend std::ostream& operator<<(std::ostream& os, const Oras& oras);
 
-    [[nodiscard]] int getPopulation() const;
+    //[[nodiscard]] int getPopulation() const;
 };
 
 #endif //PRJCT_OOP_ORAS_H

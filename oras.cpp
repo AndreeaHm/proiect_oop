@@ -18,6 +18,6 @@ std::ostream& operator<<(std::ostream& os, const Oras& oras) {
     return os;
 }
 
-int Oras::getPopulation() const {
+/*int Oras::getPopulation() const {
     return population;
-}
+}*/
