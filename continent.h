@@ -9,10 +9,6 @@
 #include <vector>
 #include "tara.h"
 
-#include <string>
-#include <vector>
-#include "tara.h"
-
 class Continent {
     std::string nume;
     std::vector<Tara*> tari;

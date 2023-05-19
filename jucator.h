@@ -1,7 +1,7 @@
 #ifndef PRJCT_OOP_JUCATOR_H
 #define PRJCT_OOP_JUCATOR_H
 
-#include "Entitate.h"
+#include "entitate.h"
 #include <iostream>
 #include <string>
 
