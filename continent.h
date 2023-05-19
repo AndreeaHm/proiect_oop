@@ -12,7 +12,7 @@
 class Continent {
     std::string nume;
     std::vector<Tara*> tari;
-    int niv_dif;
+    [[maybe_unused]] int niv_dif;
 
 public:
     Continent(const std::string& nume_, std::vector<Tara*> tari_, int niv_dif_);
