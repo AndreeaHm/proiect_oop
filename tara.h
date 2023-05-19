@@ -1,25 +1,34 @@
-//
-// Created by Andreea on 16-May-23.
-//
-
-#ifndef PRJCT_OOP_ORAS_H
-#define PRJCT_OOP_ORAS_H
+#ifndef PRJCT_OOP_TARA_H
+#define PRJCT_OOP_TARA_H
 
 #include <string>
 #include <iostream>
+#include <memory>
+#include <vector>
 #include "entitate.h"
+#include "oras.h"
 
-class Oras : public Entitate {
-    int population;
+class Tara : public Entitate {
+    std::string capitala;
+    std::vector<std::shared_ptr<Oras>> orase;
 
 public:
-    Oras(const std::string& name_, int population_);
-    Oras(const Oras& other);
-    ~Oras();
+    Tara(const std::string& numetara_, const std::string& capitalatara_, const std::vector<std::shared_ptr<Oras>> orase_);
+    Tara(const Tara& other);
+    Tara& operator=(Tara other);
+    ~Tara();
 
-    friend std::ostream& operator<<(std::ostream& os, const Oras& oras);
+    friend std::ostream& operator<<(std::ostream& os, const Tara& tara);
 
-    int getPopulation() const;
+    const std::string& getCapitala() const;
+
+    const std::vector<std::shared_ptr<Oras>>& getOrase() const;
+
+    void adaugaOras(const std::shared_ptr<Oras>& oras);
+
+    Tara* clone() const;
+
+    void swap(Tara& other);
 };
 
-#endif //PRJCT_OOP_ORAS_H
+#endif // PRJCT_OOP_TARA_H
