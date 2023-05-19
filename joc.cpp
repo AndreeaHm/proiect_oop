@@ -54,7 +54,9 @@ void Joc::adauga_jucator(const Jucator &jucator) {
 }
 
 void Joc::adaugaContinent(const Continent& continentu) {
-    continente.push_back(new Continent(continentu));
+    Continent* newContinent = new Continent(continentu);
+    continente.push_back(newContinent);
+    delete newContinent;
 }
 
 void Joc::joaca(Joc& joc) {
@@ -138,6 +140,7 @@ void Joc::joaca(Joc& joc) {
                         std::cout << "Imi pare rau, " << nume << ", dar tara corecta este " << nume_tara_curenta << "." << std::endl;
                     }
                     std::cout << std::endl;
+                    delete tara_curenta;
                 }
             }
             int scor = Jucator::getScor();
