@@ -29,5 +29,4 @@ public:
     const int getNivdif() const;
 };
 
-
 #endif //PRJCT_OOP_CONTINENT_H
