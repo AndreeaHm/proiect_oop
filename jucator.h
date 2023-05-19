@@ -1,7 +1,3 @@
-//
-// Created by Andreea on 13-May-23.
-//
-
 #ifndef PRJCT_OOP_JUCATOR_H
 #define PRJCT_OOP_JUCATOR_H
 
@@ -10,26 +6,23 @@
 #include <string>
 
 class Jucator : public Entitate {
-    int scor;
+    static int scor; // Static attribute
     int nr_runde;
+    int nr_joc;
     int nivel_dific;
 
 public:
-    Jucator(const std::string& numejuc_, const int scorjuc_, const int nr_rundejuc_, const int nivel_dific_);
-
+    Jucator(const std::string& numejuc_, int nr_rundejuc_, int nr_joc_, int nivel_dific_);
     Jucator(const Jucator& other);
-
     ~Jucator();
 
     friend std::ostream& operator<<(std::ostream& os, const Jucator& jucator);
 
-    int getScor() const;
-
+    static int getScor();
     void crestere_scor(int pnct);
-
     int getNrRunde() const;
-
+    int getNrJoc() const;
     int getNivelDific() const;
 };
 
-#endif //PRJCT_OOP_JUCATOR_H
+#endif // PRJCT_OOP_JUCATOR_H
