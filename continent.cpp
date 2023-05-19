@@ -4,7 +4,7 @@
 
 #include <utility>
 
-#include "Continent.h"
+#include "continent.h"
 
 Continent::Continent(const std::string &nume_, std::vector<Tara *> tari_, const int niv_dif_) {
     nume = nume_;
