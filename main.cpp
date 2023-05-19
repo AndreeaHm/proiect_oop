@@ -5,41 +5,43 @@
 #include <fstream>
 #include <algorithm>
 #include "joc.h"
-#include "tara.h"
-#include "continent.h"
-#include "jucator.h"
-
 
 std::ifstream fin("tastatura.txt");
 std::ifstream f("europa.in");
 
-int main(){
+int main() {
     std::srand(time(nullptr));
 
-    Jucator p1("Ion", 0, 2,1);
-    Jucator p2("Ana", 0,4,1 );
-    Jucator p3("Florica", 0,3,1 );
+    Jucator p1("Ion", 3, 2, 1);
+    Jucator p2("Ana", 4, 2, 1);
+    Jucator p3("Florica", 3, 1, 1);
 
     std::vector<Tara*> tari;
     std::vector<Jucator> jucatori;
     std::vector<std::string> raspunsurile;
-    std::vector<Continent *> continentele;
+    std::vector<Continent*> continentele;
 
-    Continent* europa = new Continent("Europa", {tari},1);
+    Continent* europa = new Continent("Europa", tari, 1);
 
-    for(int i=1; i<=44; i++){
-        std::string sir1;
-        std::string sir2;
+    for (int i = 1; i <= 37; i++) {
+        std::string nume_tara;
+        std::string nume_capitala;
+        std::string oras;
+        int oraspop;
         std::string rasp;
-        f >> sir1 >> sir2;
+        f >> nume_tara >> nume_capitala;
+        Tara* t = new Tara(nume_tara, nume_capitala, {}); // Pass an empty vector to the constructor
+        for (int v = 1; v <= 3; v++) {
+            f >> oras >> oraspop;
+            std::shared_ptr<Oras> o = std::make_shared<Oras>(oras, oraspop);
+            t->adaugaOras(o); // Add the created city to the Tara object
+        }
         fin >> rasp;
-        Tara *t;
-        t = new Tara(sir1, sir2);
         europa->adaugaTara(t);
         raspunsurile.push_back(rasp);
     }
 
-    Joc j1(jucatori,raspunsurile, continentele);
+    Joc j1(jucatori, raspunsurile, continentele);
     j1.adauga_jucator(p3);
     j1.adauga_jucator(p1);
     j1.adaugaContinent(*europa);
