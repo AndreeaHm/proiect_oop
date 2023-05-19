@@ -1,25 +1,25 @@
 //
-// Created by Andreea on 13-May-23.
+// Created by Andreea on 16-May-23.
 //
 
-#ifndef PRJCT_OOP_TARA_H
-#define PRJCT_OOP_TARA_H
+#ifndef PRJCT_OOP_ORAS_H
+#define PRJCT_OOP_ORAS_H
 
 #include <string>
 #include <iostream>
 #include "entitate.h"
 
-class Tara : public Entitate {
-    std::string capitala;
+class Oras : public Entitate {
+    int population;
 
 public:
-    Tara(const std::string& numetara_, const std::string& capitalatara_);
-    Tara(const Tara& other);
-    ~Tara();
+    Oras(const std::string& name_, int population_);
+    Oras(const Oras& other);
+    ~Oras();
 
-    friend std::ostream &operator<<(std::ostream &os, const Tara &tara);
+    friend std::ostream& operator<<(std::ostream& os, const Oras& oras);
 
-    const std::string &getCapitala() const;
+    int getPopulation() const;
 };
 
-#endif //PRJCT_OOP_TARA_H
+#endif //PRJCT_OOP_ORAS_H
