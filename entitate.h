@@ -19,5 +19,4 @@ public:
     const std::string& getNume() const;
 };
 
-
 #endif //PRJCT_OOP_ENTITATE_H
