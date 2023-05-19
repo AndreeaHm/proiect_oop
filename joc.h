@@ -10,9 +10,9 @@
 #include <vector>
 #include <string>
 #include <random>
-#include "Tara.h"
-#include "Jucator.h"
-#include "Continent.h"
+#include "tara.h"
+#include "jucator.h"
+#include "continent.h"
 
 class Joc {
 
