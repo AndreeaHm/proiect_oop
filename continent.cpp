@@ -4,9 +4,9 @@
 
 #include "Continent.h"
 
-Continent::Continent(const std::string &nume_, std::vector<Tara *> vector, const int niv_dif_) {
+Continent::Continent(const std::string &nume_, std::vector<Tara *> tari_, const int niv_dif_) {
     nume = nume_;
-    tari = vector;
+    tari = tari_;
     niv_dif = niv_dif_;
 }
 
@@ -17,7 +17,11 @@ Continent::~Continent() {
 }
 
 void Continent::adaugaTara(Tara* tara) {
-    tari.push_back(tara);
+    if (Tara* t = dynamic_cast<Tara*>(tara)) {
+        tari.push_back(t);
+    } else {
+        delete tara;
+    }
 }
 
 const std::string& Continent::getNumecont() const {
