@@ -12,10 +12,10 @@
 class Continent {
     std::string nume;
     std::vector<Tara*> tari;
-    int niv_dif __attribute__((unused));
+    //int niv_dif __attribute__((unused));
 
 public:
-    Continent(const std::string& nume_, std::vector<Tara*> tari_, int niv_dif_);
+    Continent(const std::string& nume_, std::vector<Tara*> tari_);
 
     ~Continent();
 

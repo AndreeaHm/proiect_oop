@@ -21,7 +21,7 @@ int main() {
     std::vector<std::string> raspunsurile;
     std::vector<Continent*> continentele;
 
-    auto* europa = new Continent("Europa", tari, 1);
+    auto* europa = new Continent("Europa", tari);
 
     for (int i = 1; i <= 37; i++) {
         std::string nume_tara;

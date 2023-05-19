@@ -6,8 +6,8 @@
 
 #include "continent.h"
 
-Continent::Continent(const std::string& nume_, std::vector<Tara*> tari_, int niv_dif_)
-        : nume(nume_), tari(std::move(tari_)), niv_dif(niv_dif_) {}
+Continent::Continent(const std::string& nume_, std::vector<Tara*> tari_)
+        : nume(nume_), tari(std::move(tari_)) {}
 
 Continent::~Continent() {
     for (auto tara : tari) {
