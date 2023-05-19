@@ -28,7 +28,7 @@ public:
 
     Joc(const Joc &other);
 
-    Joc(Joc &&other) noexcept;
+    [[maybe_unused]] Joc(Joc &&other) noexcept;
 
     Joc &operator=(const Joc &other);
 

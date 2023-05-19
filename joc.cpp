@@ -16,7 +16,7 @@ Joc::Joc(const std::vector<Jucator>& juc_, const std::vector<std::string>& raspu
 Joc::Joc(const Joc& other)
         : juc(other.juc), raspunsuri(other.raspunsuri), continente(other.continente) {}
 
-Joc::Joc(Joc&& other) noexcept
+[[maybe_unused]] Joc::Joc(Joc&& other) noexcept
         : juc(std::move(other.juc)), raspunsuri(std::move(other.raspunsuri)), continente(std::move(other.continente)) {}
 
 Joc& Joc::operator=(const Joc& other) {
@@ -69,14 +69,14 @@ void Joc::joaca(Joc& joc) {
             if (tarajuc.empty()) {
                 throw exceptie1("Lista de tari este goala!");
             }
-            for (int i = tarajuc.size() - 1; i > 0; --i) {
+            for (unsigned long long i = tarajuc.size() - 1; i > 0; --i) {
                 std::uniform_int_distribution<int> dist(0, i);
-                int j = dist(g);
+                unsigned long long j = dist(g);
                 if (i != j) {
                     std::swap(tarajuc[i], tarajuc[j]);
                 }
             }
-            int random_rsp[50];
+            unsigned long random_rsp[50];
             for (unsigned long k = 0; k < joc.raspunsuri.size(); k++) {
                 random_rsp[k] = k;
             }
@@ -85,11 +85,11 @@ void Joc::joaca(Joc& joc) {
             std::string nume = juctr.getNume();
             std::cout << "Jucatorul " << nume << std::endl;
             int jocul_ales = juctr.getNrJoc();
-            int nrr = juctr.getNrRunde();
+            unsigned long long nrr = juctr.getNrRunde();
             if (jocul_ales == 1) {
-                for (int i = 0; i < nrr; i++) {
-                    int random_index = i;
-                    int random_r = random_rsp[i];
+                for (unsigned long long i = 0; i < nrr; i++) {
+                    unsigned long long random_index = i;
+                    unsigned long long random_r = random_rsp[i];
 
                     if (random_index >= tarajuc.size()) {
                         throw exceptie2("Indexul aleator depaseste dimensiunea listei de tari!");
@@ -106,7 +106,7 @@ void Joc::joaca(Joc& joc) {
 
                     if (raspuns == capitala) {
                         std::cout << "Felicitari, " << nume << "! Ai ghicit capitala tarii " << tara << "." << std::endl;
-                        juctr.crestere_scor(10);
+                        Jucator::crestere_scor(10);
                     } else {
                         std::cout << "Imi pare rau, " << nume << ", dar capitala tarii " << tara << " este " << capitala
                                   << "." << std::endl;
@@ -115,11 +115,11 @@ void Joc::joaca(Joc& joc) {
                     std::cout << std::endl;
                 }
             } else if (jocul_ales == 2) {
-                for (int i = 0; i < nrr; i++) {
+                for (unsigned long long i = 0; i < nrr; i++) {
                     if (i >= tarajuc.size())
                         break;
 
-                    int random_index = i;
+                    unsigned long long random_index = i;
                     Tara* tara_curenta = tarajuc[random_index]->clone();
                     std::string nume_tara_curenta = tara_curenta->getNume();
                     const std::vector<std::shared_ptr<Oras>>& orase_curente = tara_curenta->getOrase();
@@ -133,7 +133,7 @@ void Joc::joaca(Joc& joc) {
                     std::cin >> raspuns;
                     if (raspuns == nume_tara_curenta) {
                         std::cout << "Felicitari, " << nume << "! Ai nimerit tara " << nume_tara_curenta << "." << std::endl;
-                        juctr.crestere_scor(10);
+                        Jucator::crestere_scor(10);
                     } else {
                         std::cout << "Imi pare rau, " << nume << ", dar tara corecta este " << nume_tara_curenta << "." << std::endl;
                     }
