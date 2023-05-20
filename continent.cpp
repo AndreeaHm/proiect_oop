@@ -2,8 +2,6 @@
 // Created by Andreea on 13-May-23.
 //
 
-#include <utility>
-
 #include "continent.h"
 
 Continent::Continent(const std::string& nume_, std::vector<std::unique_ptr<Tara>> tari_)
@@ -22,7 +20,3 @@ const std::string& Continent::getNumecont() const {
 const std::vector<std::unique_ptr<Tara>>& Continent::getTari() const {
     return tari;
 }
-
-/*const int Continent::getNivdif() const {
-    return niv_dif;
-}*/
