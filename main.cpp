@@ -44,7 +44,7 @@ int main() {
     Joc j1(jucatori, raspunsurile, continentele);
     j1.adauga_jucator(p3);
     j1.adauga_jucator(p1);
-    j1.adaugaContinent((const Continent &) europa);
+    j1.adaugaContinent((const Continent &) std::move(europa));
 
     Joc::joaca(j1);
 
