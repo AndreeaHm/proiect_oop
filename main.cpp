@@ -64,9 +64,6 @@ int main() {
     fin.close();
     f.close();
 
-    for (auto tara : tari) {
-        delete tara;
-    }
     delete europa;
 
     return 0;
