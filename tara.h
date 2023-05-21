@@ -3,28 +3,27 @@
 
 #include <string>
 #include <iostream>
-#include <memory>
 #include <vector>
 #include "entitate.h"
 #include "oras.h"
 
 class Tara : public Entitate {
     std::string capitala;
-    std::vector<std::shared_ptr<Oras>> orase;
+    std::vector<Oras*> orase;
 
 public:
-    Tara(const std::string& numetara_, const std::string& capitalatara_, const std::vector<std::shared_ptr<Oras>>& orase_);
+    Tara(const std::string& numetara_, const std::string& capitalatara_, const std::vector<Oras*>& orase_);
     Tara(const Tara& other);
     Tara& operator=(Tara other);
     ~Tara() override;
 
-    friend std::ostream& operator<<(std::ostream& os, const Tara& tara);
+    void afisare() const override;
 
     [[nodiscard]] const std::string& getCapitala() const;
 
-    [[nodiscard]] const std::vector<std::shared_ptr<Oras>>& getOrase() const;
+    [[nodiscard]] const std::vector<Oras*>& getOrase() const;
 
-    void adaugaOras(const std::shared_ptr<Oras>& oras);
+    void adaugaOras(Oras* oras);
 
     [[nodiscard]] Tara* clone() const;
 

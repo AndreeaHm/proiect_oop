@@ -3,22 +3,21 @@
 
 #include <string>
 #include <vector>
-#include <memory>
+#include "entitate.h"
 #include "tara.h"
 
-class Continent {
-    std::string nume;
-    std::vector<std::unique_ptr<Tara>> tari;
+class Continent : public Entitate {
+    std::vector<Tara*> tari;
 
 public:
-    Continent(const std::string& nume_, std::vector<std::unique_ptr<Tara>> tari_);
+    Continent(const std::string& nume_, const std::vector<Tara*>& tari_);
 
-    ~Continent();
+    ~Continent() override;
 
-    void adaugaTara(std::unique_ptr<Tara> tara);
+    void adaugaTara(Tara* tara);
 
     [[nodiscard]] const std::string& getNumecont() const;
-    [[nodiscard]] const std::vector<std::unique_ptr<Tara>>& getTari() const;
+    [[nodiscard]] const std::vector<Tara*>& getTari() const;
 };
 
-#endif //PRJCT_OOP_CONTINENT_H
+#endif // PRJCT_OOP_CONTINENT_H

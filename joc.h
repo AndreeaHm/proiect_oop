@@ -15,8 +15,6 @@
 #include "continent.h"
 
 class Joc {
-
-
     std::vector<Jucator> juc;
     std::vector<std::string> raspunsuri;
     std::vector<Continent*> continente;
@@ -26,7 +24,7 @@ public:
 
     Joc(const std::vector<Jucator> &juc_, const std::vector<std::string> &raspunsuri_, const std::vector<Continent*> &continente_);
 
-    Joc(const Joc &other);
+    [[maybe_unused]] Joc(const Joc &other);
 
     [[maybe_unused]] Joc(Joc &&other) noexcept;
 

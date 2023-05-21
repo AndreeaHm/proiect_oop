@@ -3,15 +3,18 @@
 //
 
 #include "entitate.h"
+#include <iostream>
 
-#include <utility>
+Entitate::Entitate(std::string nume_) : nume(std::move(nume_)) {}
 
-Entitate::Entitate(std::string  nume_): nume(std::move(nume_)) {}
-
-//Entitate::Entitate(const Entitate& other): nume(other.nume) {}
-
-Entitate::~Entitate() {}
+Entitate::~Entitate() = default;
 
 const std::string& Entitate::getNume() const {
     return nume;
 }
+
+void Entitate::afisare() const {
+    std::cout << "Nume: " << nume << std::endl;
+}
+
+

@@ -13,7 +13,7 @@ Joc::Joc() = default;
 Joc::Joc(const std::vector<Jucator>& juc_, const std::vector<std::string>& raspunsuri_, const std::vector<Continent*>& continente_)
         : juc(juc_), raspunsuri(raspunsuri_), continente(continente_) {}
 
-Joc::Joc(const Joc& other)
+[[maybe_unused]] Joc::Joc(const Joc& other)
         : juc(other.juc), raspunsuri(other.raspunsuri), continente(other.continente) {}
 
 [[maybe_unused]] Joc::Joc(Joc&& other) noexcept
@@ -54,9 +54,8 @@ void Joc::adauga_jucator(const Jucator &jucator) {
 }
 
 void Joc::adaugaContinent(const Continent& continentu) {
-    Continent* newContinent = new Continent(continentu);
+    auto* newContinent = new Continent(continentu);
     continente.push_back(newContinent);
-    delete newContinent;
 }
 
 void Joc::joaca(Joc& joc) {
@@ -67,9 +66,9 @@ void Joc::joaca(Joc& joc) {
         for (auto& juctr : joc.juc) {
             int nivelul_de_dific = juctr.getNivelDific();
             Continent* cont_jucat = joc.continente.at(nivelul_de_dific - 1);
-            std::vector<Tara*> tarajuc = cont_jucat->getTari();
+            auto tarajuc = cont_jucat->getTari();
             if (tarajuc.empty()) {
-                throw exceptie1("Lista de tari este goala!");
+                throw exceptie_lista_tari_goala("Lista de tari este goala!");
             }
             for (unsigned long long i = tarajuc.size() - 1; i > 0; --i) {
                 std::uniform_int_distribution<int> dist(0, i);
@@ -94,7 +93,7 @@ void Joc::joaca(Joc& joc) {
                     unsigned long long random_r = random_rsp[i];
 
                     if (random_index >= tarajuc.size()) {
-                        throw exceptie2("Indexul aleator depaseste dimensiunea listei de tari!");
+                        throw exceptie_index_depaseste("Indexul aleator depaseste dimensiunea listei de tari!");
                     }
 
                     std::string tara = tarajuc[random_index]->getNume();
@@ -124,7 +123,7 @@ void Joc::joaca(Joc& joc) {
                     unsigned long long random_index = i;
                     Tara* tara_curenta = tarajuc[random_index]->clone();
                     std::string nume_tara_curenta = tara_curenta->getNume();
-                    const std::vector<std::shared_ptr<Oras>>& orase_curente = tara_curenta->getOrase();
+                    const std::vector<Oras*>& orase_curente = tara_curenta->getOrase();
                     std::cout << "Orasele: ";
                     for (const auto& oras : orase_curente) {
                         std::cout << oras->getNume() << " ";
@@ -146,9 +145,9 @@ void Joc::joaca(Joc& joc) {
             int scor = Jucator::getScor();
             std::cout << "Scorul lui " << nume << " este " << scor << std::endl;
         }
-    } catch (const exceptie1& e) {
+    } catch (const exceptie_lista_tari_goala& e) {
         std::cout << "Eroare exceptie1: " << e.what() << std::endl;
-    } catch (const exceptie2& e) {
+    } catch (const exceptie_index_depaseste& e) {
         std::cout << "Eroare exceptie2: " << e.what() << std::endl;
     } catch (const std::exception& e) {
         std::cout << "Eroare: " << e.what() << std::endl;

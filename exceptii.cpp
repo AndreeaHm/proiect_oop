@@ -4,14 +4,14 @@
 
 #include "exceptii.h"
 
-exceptie1::exceptie1(const std::string& message) : message_(message) {}
+exceptie_lista_tari_goala::exceptie_lista_tari_goala(const std::string& message) : message_(message) {}
 
-const char* exceptie1::what() const noexcept {
+const char* exceptie_lista_tari_goala::what() const noexcept {
     return message_.c_str();
 }
 
-exceptie2::exceptie2(const std::string& message) : message_(message) {}
+exceptie_index_depaseste::exceptie_index_depaseste(const std::string& message) : message_(message) {}
 
-const char* exceptie2::what() const noexcept {
+const char* exceptie_index_depaseste::what() const noexcept {
     return message_.c_str();
 }

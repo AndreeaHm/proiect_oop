@@ -4,19 +4,23 @@
 
 #include "continent.h"
 
-Continent::Continent(const std::string& nume_, std::vector<std::unique_ptr<Tara>> tari_)
-        : nume(nume_), tari(std::move(tari_)) {}
+Continent::Continent(const std::string& nume_, const std::vector<Tara*>& tari_)
+        : Entitate(nume_), tari(tari_) {}
 
-Continent::~Continent() = default;
+Continent::~Continent() {
+    for (auto* tara : tari) {
+        delete tara;
+    }
+}
 
-void Continent::adaugaTara(std::unique_ptr<Tara> tara) {
-    tari.push_back(std::move(tara));
+void Continent::adaugaTara(Tara* tara) {
+    tari.push_back(tara);
 }
 
 const std::string& Continent::getNumecont() const {
     return nume;
 }
 
-const std::vector<std::unique_ptr<Tara>>& Continent::getTari() const {
+const std::vector<Tara*>& Continent::getTari() const {
     return tari;
 }

@@ -12,7 +12,7 @@ Jucator::Jucator(const std::string& numejuc_, int nr_rundejuc_, int nr_joc_, int
 Jucator::Jucator(const Jucator& other)
         : Entitate(other.nume), nr_runde(other.nr_runde), nr_joc(other.nr_joc), nivel_dific(other.nivel_dific) {}
 
-Jucator::~Jucator() {}
+Jucator::~Jucator() = default;
 
 std::ostream& operator<<(std::ostream& os, const Jucator& jucator) {
     os << "Nume jucator: " << jucator.nume << "\n";
@@ -45,9 +45,7 @@ int Jucator::getNivelDific() const {
 
 Jucator& Jucator::operator=(const Jucator& other) {
     if (this != &other) {
-        // Perform member-wise assignment
         Entitate::operator=(other);
-        // Additional assignment for Jucator-specific members, if any
     }
     return *this;
 }

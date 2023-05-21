@@ -10,7 +10,7 @@ Oras::Oras(const std::string& name_, int population_)
 Oras::Oras(const Oras& other)
         : Entitate(other), population(other.population) {}
 
-Oras::~Oras() {}
+Oras::~Oras() = default;
 
 std::ostream& operator<<(std::ostream& os, const Oras& oras) {
     os << "Nume oras: " << oras.getNume() << std::endl;
