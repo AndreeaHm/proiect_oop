@@ -8,7 +8,7 @@ Continent::Continent(const std::string& nume_, const std::vector<Tara*>& tari_)
         : Entitate(nume_), tari(tari_) {}
 
 Continent::~Continent() {
-    for (auto* tara : tari) {
+    for (auto tara : tari) {
         delete tara;
     }
 }

@@ -12,7 +12,6 @@ Tara::Tara(const Tara& other)
     for (const auto &oras: other.orase) {
         orase.push_back(new Oras(*oras));
     }
-
 }
 
 Tara& Tara::operator=(Tara other) {
@@ -21,7 +20,7 @@ Tara& Tara::operator=(Tara other) {
 }
 
 Tara::~Tara() {
-    for (auto& oras : orase) {
+    for (auto oras : orase) {
         delete oras;
     }
 }

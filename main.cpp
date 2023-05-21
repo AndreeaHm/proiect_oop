@@ -26,8 +26,6 @@ int main() {
         return 1;
     }
 
-
-
     std::vector<Tara*> tari;
     std::vector<Jucator> jucatori;
     std::vector<std::string> raspunsurile;
