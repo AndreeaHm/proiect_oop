@@ -123,10 +123,10 @@ void Joc::joaca(Joc& joc) {
                     unsigned long long random_index = i;
                     Tara* tara_curenta = tarajuc[random_index]->clone();
                     std::string nume_tara_curenta = tara_curenta->getNume();
-                    const std::vector<Oras*>& orase_curente = tara_curenta->getOrase();
+                    const std::vector<Oras>& orase_curente = tara_curenta->getOrase();
                     std::cout << "Orasele: ";
                     for (const auto& oras : orase_curente) {
-                        std::cout << oras->getNume() << " ";
+                        std::cout << oras.getNume() << " ";
                     }
                     std::cout << "apartin carei tari?" << std::endl;
                     std::cout << "Raspuns: ";
@@ -139,7 +139,6 @@ void Joc::joaca(Joc& joc) {
                         std::cout << "Imi pare rau, " << nume << ", dar tara corecta este " << nume_tara_curenta << "." << std::endl;
                     }
                     std::cout << std::endl;
-                    delete tara_curenta;
                 }
             }
             int scor = Jucator::getScor();

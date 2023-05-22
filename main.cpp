@@ -35,20 +35,24 @@ int main() {
     europa = new Continent("Europa", tari);
 
     for (int i = 1; i <= 37; i++) {
-        std::string nume_tara;
+        std::string nume_taraa;
         std::string nume_capitala;
         std::string oras;
         int oraspop;
+        int tip_tara;
         std::string rasp;
-        f >> nume_tara >> nume_capitala;
-        auto t = new Tara(nume_tara, nume_capitala, std::vector<Oras*>{});
+        std::vector<Oras> orase;
+        f >> tip_tara >> nume_taraa >> nume_capitala;
         for (int v = 1; v <= 3; v++) {
             f >> oras >> oraspop;
             auto o = new Oras(oras, oraspop);
-            t->adaugaOras(o);
+            orase.push_back(*o);
         }
         fin >> rasp;
-        europa->adaugaTara(t);
+        if(tip_tara == 1)
+            europa->adaugaTara(Tara_locked{nume_taraa,nume_capitala,orase}.clone());
+        else
+            europa->adaugaTara(Tara_apa{nume_taraa,nume_capitala,orase}.clone());
         raspunsurile.push_back(rasp);
     }
 

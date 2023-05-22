@@ -4,8 +4,8 @@
 
 #include "continent.h"
 
-Continent::Continent(const std::string& nume_, const std::vector<Tara*>& tari_)
-        : Entitate(nume_), tari(tari_) {}
+Continent::Continent(const std::string& nume_,  std::vector<Tara*>& tari_)
+        : Entitate(nume_), tari(std::move(tari_)) {}
 
 Continent::~Continent() {
     for (auto tara : tari) {

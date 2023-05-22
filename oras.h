@@ -9,16 +9,16 @@
 #include <iostream>
 #include "entitate.h"
 
-class Oras : public Entitate {
+class Oras {
+    std::string nume_oras;
     int population;
 
 public:
-    Oras(const std::string& name_, int population_);
+    Oras(const std::string& nume_oras_, int population_);
     Oras(const Oras& other);
-    ~Oras() override;
-
+    ~Oras();
     friend std::ostream& operator<<(std::ostream& os, const Oras& oras);
-
+    const std::string& getNume() const;
     //[[nodiscard]] int getPopulation() const;
 };
 
