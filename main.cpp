@@ -16,16 +16,6 @@ int main() {
     Jucator p2("Ana", 4, 2, 1);
     Jucator p3("Florica", 3, 1, 1);
 
-    if (!fin) {
-        std::cerr << "Eroare la deschiderea fisierului tastatura.txt\n";
-        return 1;
-    }
-
-    if (!f) {
-        std::cerr << "Eroare la deschiderea fisierului europa.in\n";
-        return 1;
-    }
-
     std::vector<Tara*> tari;
     std::vector<Jucator> jucatori;
     std::vector<std::string> raspunsurile;
