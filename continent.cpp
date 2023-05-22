@@ -7,11 +7,7 @@
 Continent::Continent(const std::string& nume_,  std::vector<Tara*>& tari_)
         : Entitate(nume_), tari(std::move(tari_)) {}
 
-Continent::~Continent() {
-    for (auto tara : tari) {
-        delete tara;
-    }
-}
+Continent::~Continent() = default;
 
 void Continent::adaugaTara(Tara* tara) {
     tari.push_back(tara);
