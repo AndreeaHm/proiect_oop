@@ -1,17 +1,14 @@
 #include <vector>
 #include <string>
-#include <cstdlib>
-#include <ctime>
 #include <fstream>
-//#include <algorithm>
 #include "joc.h"
 
 
 int main() {
     std::ifstream fin("tastatura.txt");
     std::ifstream f("europa.in");
-    std::srand(time(nullptr));
-
+    std::random_device rd;
+    [[maybe_unused]] std::mt19937 g(rd());
     Jucator p1("Ion", 3, 2, 1);
     Jucator p2("Ana", 4, 2, 1);
     Jucator p3("Florica", 3, 1, 1);
