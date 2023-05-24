@@ -12,7 +12,7 @@ Tara::Tara(std::string  nume_tara_, std::string  capitalatara_, const std::vecto
 Tara::Tara(const Tara& other)
         : nume_tara(other.nume_tara), capitala(other.capitala) {
     for (const auto &oras: other.orase) {
-        orase.push_back(*new Oras(oras));
+        orase.emplace_back(oras);
     }
 }
 
