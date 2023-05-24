@@ -9,12 +9,7 @@
 Tara::Tara(std::string  nume_tara_, std::string  capitalatara_, const std::vector<Oras>& orase_)
         : nume_tara(std::move(nume_tara_)), capitala(std::move(capitalatara_)), orase(orase_) {}
 
-Tara::Tara(const Tara& other)
-        : nume_tara(other.nume_tara), capitala(other.capitala) {
-    for (const auto &oras: other.orase) {
-        orase.emplace_back(oras);
-    }
-}
+Tara::Tara(const Tara& other) = default;
 
 Tara& Tara::operator=(const Tara& other) {
     swap(const_cast<Tara &>(other));
@@ -48,7 +43,7 @@ void Tara::swap(Tara& other) {
     using std::swap;
     swap(nume_tara,other.nume_tara);
     swap(capitala, other.capitala);
-    swap(orase, other.orase);
+    orase.swap(other.orase);
 }
 
 Tara::Tara() = default;
