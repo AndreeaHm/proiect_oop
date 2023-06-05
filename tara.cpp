@@ -9,6 +9,14 @@
 Tara::Tara(std::string  nume_tara_, std::string  capitalatara_, const std::vector<Oras>& orase_)
         : nume_tara(std::move(nume_tara_)), capitala(std::move(capitalatara_)), orase(orase_) {}
 
+Tara::Tara(const Tara& other)
+        : nume_tara(other.nume_tara), capitala(other.capitala) {
+    // Perform a deep copy of the Oras objects
+    for (const auto &oras: other.orase)
+        orase.push_back(*new Oras(oras));
+
+}
+
 Tara& Tara::operator=(const Tara& other) {
     if (this != &other) {
         // Clean up current resources
