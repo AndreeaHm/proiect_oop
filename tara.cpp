@@ -9,14 +9,41 @@
 Tara::Tara(std::string  nume_tara_, std::string  capitalatara_, const std::vector<Oras>& orase_)
         : nume_tara(std::move(nume_tara_)), capitala(std::move(capitalatara_)), orase(orase_) {}
 
-Tara::Tara(const Tara& other) = default;
+Tara::Tara(const Tara& other)
+        : nume_tara(other.nume_tara), capitala(other.capitala) {
+    // Perform a deep copy of the Oras objects
+    for (const auto &oras: other.orase)
+        orase.push_back(*new Oras(oras));
+
+}
 
 Tara& Tara::operator=(const Tara& other) {
-    swap(const_cast<Tara &>(other));
+    if (this != &other) {
+        // Clean up current resources
+        for (auto &oras: orase)
+            delete &oras;
+
+        orase.clear();
+
+        // Copy the data from the other object
+        nume_tara = other.nume_tara;
+        capitala = other.capitala;
+
+        // Perform a deep copy of the Oras objects
+        for (const auto& oras : other.orase) {
+            orase.push_back(*new Oras(oras));
+        }
+    }
     return *this;
 }
 
-Tara::~Tara() = default;
+Tara::~Tara() {
+    // Clean up dynamically allocated Oras objects
+    for (auto &oras: orase) {
+        delete &oras;
+    }
+
+}
 
 std::ostream& operator<<(std::ostream& os, const Tara& tara) {
     os << "Tara: " << tara.nume_tara << ", Capitala: " << tara.capitala << std::endl;
@@ -39,11 +66,11 @@ const std::vector<Oras>& Tara::getOrase() const {
     return orase;
 }
 
-void Tara::swap(Tara& other) {
+[[maybe_unused]] void Tara::swap(Tara& other) {
     using std::swap;
-    swap(nume_tara,other.nume_tara);
+    swap(nume_tara, other.nume_tara);
     swap(capitala, other.capitala);
-    orase.swap(other.orase);
+    swap(orase, other.orase);
 }
 
 Tara::Tara() = default;

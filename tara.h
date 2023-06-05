@@ -15,7 +15,8 @@ protected:
 
 public:
     Tara(std::string  nume_tara_, std::string  capitalatara_, const std::vector<Oras>& orase_);
-    Tara(const Tara& other);
+
+    [[maybe_unused]] Tara(const Tara& other);
 
     Tara();
 
@@ -31,7 +32,7 @@ public:
 
     [[nodiscard]] virtual Tara* clone() const = 0;
 
-    void swap(Tara& other);
+    [[maybe_unused]] [[maybe_unused]] void swap(Tara& other);
     virtual void afisare() = 0;
 };
 
