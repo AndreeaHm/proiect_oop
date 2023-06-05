@@ -20,7 +20,7 @@ public:
     Tara();
 
     Tara& operator = (const Tara& other);
-    ~Tara();
+    virtual ~Tara();
     friend std::ostream& operator<<(std::ostream& os, const Tara& tara);
 
     [[nodiscard]] const std::string& getNume() const;

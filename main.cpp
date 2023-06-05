@@ -18,8 +18,7 @@ int main() {
     std::vector<std::string> raspunsurile;
     std::vector<Continent*> continentele;
 
-    Continent *europa;
-    europa = new Continent("Europa", tari);
+    auto* europa = new Continent("Europa", tari);
 
     for (int i = 1; i <= 37; i++) {
         std::string nume_taraa;
@@ -34,12 +33,13 @@ int main() {
             f >> oras >> oraspop;
             auto o = new Oras(oras, oraspop);
             orase.push_back(*o);
+            delete o;
         }
         fin >> rasp;
-        if(tip_tara == 1)
-            europa->adaugaTara(Tara_locked{nume_taraa,nume_capitala,orase}.clone());
+        if (tip_tara == 1)
+            europa->adaugaTara(new Tara_locked{ nume_taraa, nume_capitala, orase });
         else
-            europa->adaugaTara(Tara_apa{nume_taraa,nume_capitala,orase}.clone());
+            europa->adaugaTara(new Tara_apa{ nume_taraa, nume_capitala, orase });
         raspunsurile.push_back(rasp);
     }
 
@@ -50,10 +50,13 @@ int main() {
 
     Joc::joaca(j1);
 
+    for (auto tara : tari) {
+        delete tara;
+    }
+    delete europa;
+
     fin.close();
     f.close();
-
-    delete europa;
 
     return 0;
 }
