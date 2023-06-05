@@ -10,6 +10,7 @@ Oras::Oras(const std::string& nume_oras_, int population_)
 Oras::Oras(const Oras& other)
         : nume_oras(other.nume_oras), population(other.population) {}
 
+
 Oras::~Oras() = default;
 
 std::ostream& operator<<(std::ostream& os, const Oras& oras) {

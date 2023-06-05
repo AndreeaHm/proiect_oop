@@ -16,8 +16,6 @@ protected:
 public:
     Tara(std::string  nume_tara_, std::string  capitalatara_, const std::vector<Oras>& orase_);
 
-    [[maybe_unused]] Tara(const Tara& other);
-
     Tara();
 
     Tara& operator = (const Tara& other);
