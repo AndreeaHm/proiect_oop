@@ -153,5 +153,4 @@ void Joc::joaca(Joc& joc) {
     }
 }
 
-Joc::~Joc() {
-}
+Joc::~Joc() = default;

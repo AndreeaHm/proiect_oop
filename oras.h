@@ -18,7 +18,7 @@ public:
     Oras(const Oras& other);
     ~Oras();
     friend std::ostream& operator<<(std::ostream& os, const Oras& oras);
-    const std::string& getNume() const;
+    [[nodiscard]] const std::string& getNume() const;
     //[[nodiscard]] int getPopulation() const;
 };
 

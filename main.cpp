@@ -35,10 +35,24 @@ int main() {
             orase.push_back(*o);
         }
         fin >> rasp;
+        /*
         if (tip_tara == 1)
             europa->adaugaTara(new Tara_locked{ nume_taraa, nume_capitala, orase });
+            //obiect de tip pointer cu clone la tara curenta in loc de new
+            europa->adaugaTara()
         else
             europa->adaugaTara(new Tara_apa{ nume_taraa, nume_capitala, orase });
+        */
+        Tara* taraPtr;
+        if (tip_tara == 1) {
+            taraPtr = new Tara_locked{ nume_taraa, nume_capitala, orase };
+        } else {
+            taraPtr = new Tara_apa{ nume_taraa, nume_capitala, orase };
+        }
+
+        europa->adaugaTara(taraPtr->clone());
+
+
         raspunsurile.push_back(rasp);
     }
 
@@ -52,6 +66,7 @@ int main() {
     for (auto tara : tari) {
         delete tara;
     }
+
     delete europa;
 
     fin.close();

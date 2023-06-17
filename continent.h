@@ -12,7 +12,7 @@ class Continent : public Entitate {
 public:
     Continent(const std::string& nume_,  std::vector<Tara*>& tari_);
 
-    ~Continent() override;
+    ~Continent();
 
     void adaugaTara(Tara* tara);
 
