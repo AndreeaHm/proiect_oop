@@ -18,6 +18,9 @@ public:
 
     [[nodiscard]] const std::string& getNumecont() const;
     [[nodiscard]] const std::vector<Tara*>& getTari() const;
+
+    //operator[]
+    Tara* operator[](int index);
 };
 
 #endif // PRJCT_OOP_CONTINENT_H

@@ -18,7 +18,7 @@ int main() {
     std::vector<std::string> raspunsurile;
     std::vector<Continent> continentele;
 
-    auto europa = new Continent("Europa", tari);
+    auto europa = Continent("Europa", tari);
 
     for (int i = 1; i <= 37; i++) {
         std::string nume_taraa;
@@ -31,18 +31,11 @@ int main() {
         f >> tip_tara >> nume_taraa >> nume_capitala;
         for (int v = 1; v <= 3; v++) {
             f >> oras >> oraspop;
-            auto o = new Oras(oras, oraspop);
-            orase.push_back(*o);
+            auto o = Oras(oras, oraspop);
+            orase.push_back(o);
         }
         fin >> rasp;
-        /*
-        if (tip_tara == 1)
-            europa->adaugaTara(new Tara_locked{ nume_taraa, nume_capitala, orase });
-            //obiect de tip pointer cu clone la tara curenta in loc de new
-            europa->adaugaTara()
-        else
-            europa->adaugaTara(new Tara_apa{ nume_taraa, nume_capitala, orase });
-        */
+
         Tara* taraPtr;
         if (tip_tara == 1) {
             taraPtr = new Tara_locked{ nume_taraa, nume_capitala, orase };
@@ -50,7 +43,7 @@ int main() {
             taraPtr = new Tara_apa{ nume_taraa, nume_capitala, orase };
         }
 
-        europa->adaugaTara(taraPtr->clone());
+        europa.adaugaTara(taraPtr->clone());
 
 
         raspunsurile.push_back(rasp);
@@ -59,15 +52,15 @@ int main() {
     Joc j1(jucatori, raspunsurile, continentele);
     j1.adauga_jucator(p3);
     j1.adauga_jucator(p1);
-    j1.adaugaContinent(*europa);
+    j1.adaugaContinent(europa);
 
     Joc::joaca(j1);
+
 
     for (auto tara : tari) {
         delete tara;
     }
 
-    delete europa;
 
     fin.close();
     f.close();

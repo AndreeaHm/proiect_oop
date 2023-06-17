@@ -54,8 +54,8 @@ void Joc::adauga_jucator(const Jucator &jucator) {
 }
 
 void Joc::adaugaContinent(const Continent& continentu) {
-    auto* newContinent = new Continent(continentu);
-    continente.push_back(*newContinent);
+    auto newContinent = Continent(continentu);
+    continente.push_back(newContinent);
 }
 
 void Joc::joaca(Joc& joc) {
