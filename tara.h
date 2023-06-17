@@ -35,8 +35,6 @@ public:
     [[maybe_unused]] [[maybe_unused]] void swap(Tara& other);
     virtual void afisare() = 0;
 
-    //No viable overloaded operator[] for type 'std::vector<Tara *>'
-    virtual const Tara& operator[](int index) const = 0;
 
 };
 
@@ -47,8 +45,6 @@ public:
     void afisare() override;
 
     [[nodiscard]] Tara_locked* clone() const override;
-
-    const Tara& operator[](int index) const override;
 
 };
 
@@ -61,8 +57,6 @@ public:
     //din clasele derivate, altfel nu are sens sa fie virtuala
 
     [[nodiscard]] Tara_apa* clone() const override;
-
-    const Tara& operator[](int index) const override;
 };
 
 #endif // PRJCT_OOP_TARA_H

@@ -20,7 +20,3 @@ const std::string& Continent::getNumecont() const {
 const std::vector<Tara*>& Continent::getTari() const {
     return tari;
 }
-
-Tara* Continent::operator[](int index) {
-    return tari[index];
-}

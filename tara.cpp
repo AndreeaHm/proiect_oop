@@ -103,11 +103,4 @@ Tara_apa* Tara_apa::clone() const {
 
 Tara_apa::Tara_apa(const std::string& nt, const std::string& nc, const std::vector<Oras>& orase_): Tara(nt, nc, orase_){}
 
-const Tara& Tara_locked::operator[](int index) const {
-    return *this;
-}
-
-const Tara& Tara_apa::operator[](int index) const {
-    return *this;
-}
 
