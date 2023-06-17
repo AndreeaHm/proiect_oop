@@ -46,6 +46,8 @@ public:
 
     [[nodiscard]] Tara_locked* clone() const override;
 
+    ~Tara_locked() override = default;
+
 };
 
 class Tara_apa: public Tara{
@@ -57,6 +59,8 @@ public:
     //din clasele derivate, altfel nu are sens sa fie virtuala
 
     [[nodiscard]] Tara_apa* clone() const override;
+
+    ~Tara_apa() override = default;
 };
 
 #endif // PRJCT_OOP_TARA_H

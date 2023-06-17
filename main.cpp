@@ -20,6 +20,8 @@ int main() {
 
     auto europa = Continent("Europa", tari);
 
+    Tara* taraPtr;
+
     for (int i = 1; i <= 37; i++) {
         std::string nume_taraa;
         std::string nume_capitala;
@@ -35,8 +37,8 @@ int main() {
             orase.push_back(o);
         }
         fin >> rasp;
+        //in vectorul europa se adauga tara a pointer de tip tara catre clasa derivata, cu ajutorul functiei clone
 
-        Tara* taraPtr;
         if (tip_tara == 1) {
             taraPtr = new Tara_locked{ nume_taraa, nume_capitala, orase };
         } else {
@@ -61,6 +63,7 @@ int main() {
         delete tara;
     }
 
+    delete taraPtr;
 
     fin.close();
     f.close();

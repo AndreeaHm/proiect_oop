@@ -13,7 +13,7 @@ Tara::Tara(const Tara& other)
         : nume_tara(other.nume_tara), capitala(other.capitala) {
     // Perform a deep copy of the Oras objects
     for (const auto &oras: other.orase)
-        orase.push_back(*new Oras(oras));
+        orase.push_back(Oras(oras));
 
 }
 
@@ -31,19 +31,13 @@ Tara& Tara::operator=(const Tara& other) {
 
         // Perform a deep copy of the Oras objects
         for (const auto& oras : other.orase) {
-            orase.push_back(*new Oras(oras));
+            orase.push_back(Oras(oras));
         }
     }
     return *this;
 }
 
-Tara::~Tara() {
-    // Clean up dynamically allocated Oras objects
-    for (auto &oras: orase) {
-        delete &oras;
-    }
-
-}
+Tara::~Tara() = default;
 
 std::ostream& operator<<(std::ostream& os, const Tara& tara) {
     os << "Tara: " << tara.nume_tara << ", Capitala: " << tara.capitala << std::endl;
@@ -97,7 +91,7 @@ void Tara_apa::afisare() {
     Tara::afisare();
 }
 
-Tara_apa* Tara_apa::clone() const {
+Tara_apa* Tara_apa::clone() const{
     return new Tara_apa(*this);
 }
 

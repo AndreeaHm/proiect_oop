@@ -5,12 +5,17 @@
 #include "continent.h"
 
 Continent::Continent(const std::string& nume_,  std::vector<Tara*>& tari_)
-        : Entitate(nume_), tari(std::move(tari_)) {}
+        : Entitate(nume_){
+    for(auto tara : tari_) {
+        tari.push_back(tara->clone());
+    }
+}
 
-Continent::~Continent() = default;
+Continent::~Continent() {
+}
 
 void Continent::adaugaTara(Tara* tara) {
-    tari.push_back(tara);
+    tari.push_back(tara->clone());
 }
 
 const std::string& Continent::getNumecont() const {
