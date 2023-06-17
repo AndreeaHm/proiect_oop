@@ -46,10 +46,12 @@ public:
 };
 
 class Tara_apa: public Tara{
+    // numele marii, modificare constructor si afisare
 public:
     Tara_apa(const std::string& nt, const std::string& nc, const std::vector<Oras>& orase_);
 
-    void afisare() override;
+    void afisare() override;//trebuie si afisat numele marii ca sa fie o diferenta intre functiile virtuale
+    //din clasele derivate, altfel nu are sens sa fie virtuala
 
     [[nodiscard]] Tara_apa* clone() const override;
 };

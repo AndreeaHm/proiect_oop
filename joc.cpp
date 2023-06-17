@@ -10,7 +10,7 @@
 
 Joc::Joc() = default;
 
-Joc::Joc(const std::vector<Jucator>& juc_, const std::vector<std::string>& raspunsuri_, const std::vector<Continent*>& continente_)
+Joc::Joc(const std::vector<Jucator>& juc_, const std::vector<std::string>& raspunsuri_, const std::vector<Continent>& continente_)
         : juc(juc_), raspunsuri(raspunsuri_), continente(continente_) {}
 
 [[maybe_unused]] Joc::Joc(const Joc& other) = default;
@@ -43,7 +43,7 @@ std::ostream& operator<<(std::ostream& os, const Joc& joc) {
     os << std::endl;
     os << "Continente: ";
     for (const auto& cont : joc.continente) {
-        os << cont->getNumecont() << ", ";
+        os << cont.getNumecont() << ", ";
     }
     os << std::endl;
     return os;
@@ -55,7 +55,7 @@ void Joc::adauga_jucator(const Jucator &jucator) {
 
 void Joc::adaugaContinent(const Continent& continentu) {
     auto* newContinent = new Continent(continentu);
-    continente.push_back(newContinent);
+    continente.push_back(*newContinent);
 }
 
 void Joc::joaca(Joc& joc) {
@@ -65,8 +65,8 @@ void Joc::joaca(Joc& joc) {
 
         for (auto& juctr : joc.juc) {
             int nivelul_de_dific = juctr.getNivelDific();
-            Continent* cont_jucat = joc.continente.at(nivelul_de_dific - 1);
-            auto tarajuc = cont_jucat->getTari();
+            Continent cont_jucat = joc.continente.at(nivelul_de_dific - 1);
+            auto tarajuc = cont_jucat.getTari();
             if (tarajuc.empty()) {
                 throw exceptie_lista_tari_goala("Lista de tari este goala!");
             }
@@ -154,7 +154,4 @@ void Joc::joaca(Joc& joc) {
 }
 
 Joc::~Joc() {
-    for (auto* continent : continente) {
-        delete continent;
-    }
 }

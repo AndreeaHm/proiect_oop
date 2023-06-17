@@ -17,12 +17,12 @@
 class Joc {
     std::vector<Jucator> juc;
     std::vector<std::string> raspunsuri;
-    std::vector<Continent*> continente;
+    std::vector<Continent> continente;
 
 public:
     Joc();
 
-    Joc(const std::vector<Jucator> &juc_, const std::vector<std::string> &raspunsuri_, const std::vector<Continent*> &continente_);
+    Joc(const std::vector<Jucator> &juc_, const std::vector<std::string> &raspunsuri_, const std::vector<Continent> &continente_);
 
     [[maybe_unused]] Joc(const Joc &other);
 

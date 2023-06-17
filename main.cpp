@@ -16,9 +16,9 @@ int main() {
     std::vector<Tara*> tari;
     std::vector<Jucator> jucatori;
     std::vector<std::string> raspunsurile;
-    std::vector<Continent*> continentele;
+    std::vector<Continent> continentele;
 
-    auto* europa = new Continent("Europa", tari);
+    auto europa = new Continent("Europa", tari);
 
     for (int i = 1; i <= 37; i++) {
         std::string nume_taraa;
@@ -33,7 +33,6 @@ int main() {
             f >> oras >> oraspop;
             auto o = new Oras(oras, oraspop);
             orase.push_back(*o);
-            delete o;
         }
         fin >> rasp;
         if (tip_tara == 1)
