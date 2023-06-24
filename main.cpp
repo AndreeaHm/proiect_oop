@@ -23,9 +23,10 @@ int main() {
     std::vector<std::string> raspunsurile;
     std::vector<Continent> continentele;
 
-    Continent europa("Europa");
+    auto europa = Continent("Europa", tari);
     //creezi un vector de pointeri cu clone
     //pe care sa il pasezi ca atribut cand apelezi constructorul din continent
+    Tara* taraPtr;
 
     for (int i = 1; i <= 37; i++) {
         std::string nume_maree;
@@ -38,8 +39,8 @@ int main() {
         std::vector<Oras> orase;
         f >> tip_tara;
         if(tip_tara == 2)
-            f >> nume_maree;
-        f >> nume_taraa >> nume_capitala;
+            f >>nume_maree;
+        f >>nume_taraa >> nume_capitala;
         for (int v = 1; v <= 3; v++) {
             f >> oras >> oraspop;
             auto o = Oras(oras, oraspop);
@@ -48,14 +49,15 @@ int main() {
         fin >> rasp;
         //in vectorul europa se adauga tara a pointer de tip tara catre clasa derivata, cu ajutorul functiei clone
         if (tip_tara == 1) {
-            Tara* taraPtr = new Tara_locked{ nume_taraa, nume_capitala, orase };
-            europa.adaugaTara(taraPtr->clone());
-            tari.push_back(taraPtr);
+            taraPtr = new Tara_locked{ nume_taraa, nume_capitala, orase };
         } else {
-            Tara* taraPtr = new Tara_apa{ nume_taraa, nume_capitala, orase, nume_maree };
-            europa.adaugaTara(taraPtr->clone());
-            tari.push_back(taraPtr);
+            taraPtr = new Tara_apa{ nume_taraa, nume_capitala, orase, nume_maree };
         }
+
+        europa.adaugaTara(taraPtr->clone());
+
+
+
 
         raspunsurile.push_back(rasp);
     }
@@ -71,6 +73,8 @@ int main() {
     for (auto tara : tari) {
         delete tara;
     }
+
+    delete taraPtr;
 
     fin.close();
     f.close();

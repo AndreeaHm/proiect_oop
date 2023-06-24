@@ -4,8 +4,8 @@
 
 #include "continent.h"
 
-Continent::Continent(const std::string& nume_)
-        : Entitate(nume_) {}
+Continent::Continent(const std::string& nume_, const std::vector<Tara*>& tari_)
+        : Entitate(nume_), tari(tari_) {}
 
 Continent::~Continent() = default;
 
