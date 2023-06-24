@@ -69,11 +69,6 @@ int main() {
 
     Joc::joaca(j1);
 
-
-    for (auto tara : tari) {
-        delete tara;
-    }
-
     delete taraPtr;
 
     fin.close();
