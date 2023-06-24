@@ -11,7 +11,6 @@ Tara::Tara(std::string  nume_tara_, std::string  capitalatara_, const std::vecto
 
 Tara::Tara(const Tara& other)
         : nume_tara(other.nume_tara), capitala(other.capitala) {
-    // Perform a deep copy of the Oras objects
     for (const auto &oras: other.orase)
         orase.emplace_back(oras);
 
@@ -19,25 +18,15 @@ Tara::Tara(const Tara& other)
 
 Tara& Tara::operator=(const Tara& other) {
     if (this != &other) {
-        // Clean up current resources
-        for (auto &oras: orase)
-            delete &oras;
-
-        orase.clear();
-
-        // Copy the data from the other object
         nume_tara = other.nume_tara;
         capitala = other.capitala;
-
-        // Perform a deep copy of the Oras objects
-        for (const auto& oras : other.orase) {
-            orase.emplace_back(oras);
-        }
+        orase = other.orase;
     }
     return *this;
 }
 
 Tara::~Tara() = default;
+
 
 std::ostream& operator<<(std::ostream& os, const Tara& tara) {
     os << "Tara: " << tara.nume_tara << ", Capitala: " << tara.capitala << std::endl;
@@ -82,8 +71,13 @@ void Tara_locked::afisare() {
 }
 
 Tara_locked* Tara_locked::clone() const {
-    return new Tara_locked(*this);
+    std::vector<Oras> clonedOrase;
+    for (const auto& oras : orase) {
+        clonedOrase.push_back(oras);
+    }
+    return new Tara_locked(getNume(), getCapitala(), clonedOrase);
 }
+
 
 Tara_locked::Tara_locked(const std::string& nt, const std::string& nc, const std::vector<Oras>& orase_) : Tara(nt, nc, orase_) {}
 
@@ -97,5 +91,3 @@ Tara_apa* Tara_apa::clone() const{
 }
 
 Tara_apa::Tara_apa(const std::string& nt, const std::string& nc, const std::vector<Oras>& orase_, const std::string& nume_mare_) : Tara(nt, nc, orase_), nume_mare(nume_mare_) {}
-
-
