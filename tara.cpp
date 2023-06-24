@@ -13,7 +13,7 @@ Tara::Tara(const Tara& other)
         : nume_tara(other.nume_tara), capitala(other.capitala) {
     // Perform a deep copy of the Oras objects
     for (const auto &oras: other.orase)
-        orase.push_back(Oras(oras));
+        orase.emplace_back(oras);
 
 }
 
@@ -31,7 +31,7 @@ Tara& Tara::operator=(const Tara& other) {
 
         // Perform a deep copy of the Oras objects
         for (const auto& oras : other.orase) {
-            orase.push_back(Oras(oras));
+            orase.emplace_back(oras);
         }
     }
     return *this;
@@ -89,12 +89,13 @@ Tara_locked::Tara_locked(const std::string& nt, const std::string& nc, const std
 
 void Tara_apa::afisare() {
     Tara::afisare();
+    std::cout << "Nume mare: " << nume_mare << std::endl;
 }
 
 Tara_apa* Tara_apa::clone() const{
     return new Tara_apa(*this);
 }
 
-Tara_apa::Tara_apa(const std::string& nt, const std::string& nc, const std::vector<Oras>& orase_): Tara(nt, nc, orase_){}
+Tara_apa::Tara_apa(const std::string& nt, const std::string& nc, const std::vector<Oras>& orase_, const std::string& nume_mare_) : Tara(nt, nc, orase_), nume_mare(nume_mare_) {}
 
 

@@ -2,6 +2,11 @@
 #include <string>
 #include <fstream>
 #include "joc.h"
+#include "jucator.h"
+#include "tara.h"
+#include "oras.h"
+#include "continent.h"
+#include <random>
 
 
 int main() {
@@ -19,10 +24,12 @@ int main() {
     std::vector<Continent> continentele;
 
     auto europa = Continent("Europa", tari);
-
+    //creezi un vector de pointeri cu clone
+    //pe care sa il pasezi ca atribut cand apelezi constructorul din continent
     Tara* taraPtr;
 
     for (int i = 1; i <= 37; i++) {
+        std::string nume_maree;
         std::string nume_taraa;
         std::string nume_capitala;
         std::string oras;
@@ -30,7 +37,10 @@ int main() {
         int tip_tara;
         std::string rasp;
         std::vector<Oras> orase;
-        f >> tip_tara >> nume_taraa >> nume_capitala;
+        f >> tip_tara;
+        if(tip_tara == 2)
+            f >>nume_maree;
+        f >>nume_taraa >> nume_capitala;
         for (int v = 1; v <= 3; v++) {
             f >> oras >> oraspop;
             auto o = Oras(oras, oraspop);
@@ -38,11 +48,10 @@ int main() {
         }
         fin >> rasp;
         //in vectorul europa se adauga tara a pointer de tip tara catre clasa derivata, cu ajutorul functiei clone
-
         if (tip_tara == 1) {
             taraPtr = new Tara_locked{ nume_taraa, nume_capitala, orase };
         } else {
-            taraPtr = new Tara_apa{ nume_taraa, nume_capitala, orase };
+            taraPtr = new Tara_apa{ nume_taraa, nume_capitala, orase, nume_maree };
         }
 
         europa.adaugaTara(taraPtr->clone());

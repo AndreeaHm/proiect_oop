@@ -11,7 +11,7 @@ public:
     explicit Entitate(std::string  nume_);
     virtual ~Entitate();
 
-    virtual void afisare() const;
+    [[maybe_unused]] virtual void afisare() const;
 
     [[nodiscard]] const std::string& getNume() const;
 };

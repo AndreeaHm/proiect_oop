@@ -13,8 +13,7 @@ const std::string& Entitate::getNume() const {
     return nume;
 }
 
-void Entitate::afisare() const {
+[[maybe_unused]] void Entitate::afisare() const {
     std::cout << "Nume: " << nume << std::endl;
 }
-
 
