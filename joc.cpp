@@ -6,6 +6,7 @@
 #include "exceptii.h"
 #include <random>
 #include <iostream>
+//#include <algorithm>
 
 Joc::Joc() = default;
 
