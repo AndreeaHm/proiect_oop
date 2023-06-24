@@ -5,7 +5,6 @@
 #include "joc.h"
 #include "exceptii.h"
 #include <random>
-//#include <algorithm>
 #include <iostream>
 
 Joc::Joc() = default;
@@ -81,7 +80,12 @@ void Joc::joaca(Joc& joc) {
             for (unsigned long k = 0; k < joc.raspunsuri.size(); k++) {
                 random_rsp[k] = k;
             }
-            std::shuffle(&random_rsp[1], &random_rsp[joc.raspunsuri.size()], g);
+
+            for (unsigned long i = joc.raspunsuri.size() - 1; i > 0; --i) {
+                unsigned long j = std::uniform_int_distribution<unsigned long>(0, i)(g);
+                std::swap(random_rsp[i], random_rsp[j]);
+            }
+
 
             std::string nume = juctr.getNume();
             std::cout << "Jucatorul " << nume << std::endl;
