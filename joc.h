@@ -14,6 +14,7 @@
 #include "jucator.h"
 #include "continent.h"
 #include "gamesub.h"
+#include "oras.h"
 
 class Joc {
     std::vector<Jucator> juc;
@@ -41,6 +42,8 @@ public:
     void adaugaContinent(const Continent& continentu);
 
     static void setGameSubject(GameSubject* subject);
+
+    static std::string bonus(Continent& continent);
 
     static void joaca(Joc &joc);
 

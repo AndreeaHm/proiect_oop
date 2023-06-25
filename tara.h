@@ -66,7 +66,7 @@ public:
 
     [[nodiscard]] bool hasAccesstoSea() const override;
 
-    const std::string& getNumeMare() const;
+    [[nodiscard]] const std::string& getNumeMare() const;
 
     ~Tara_apa() override = default;
 };

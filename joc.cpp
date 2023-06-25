@@ -6,7 +6,6 @@
 #include "exceptii.h"
 #include <random>
 #include <iostream>
-//#include <algorithm>
 
 GameSubject* Joc::gameSubject = nullptr;
 
@@ -62,6 +61,34 @@ void Joc::adaugaContinent(const Continent& continentu) {
 
 void Joc::setGameSubject(GameSubject* subject) {
     gameSubject = subject;
+}
+
+std::string Joc::bonus(Continent& continent){
+    auto countries = continent.getTari();
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<unsigned long> dis(0, countries.size() - 1);
+    unsigned long countryIndex = dis(gen);
+    auto selectedC = countries[countryIndex];
+
+    auto cities = selectedC->getOrase();
+    std::string nmtara = selectedC->getNume();
+
+    std::cout << "Tara selectata este: " << nmtara << " si orasele sunt: ";
+
+    for (auto& orasi: cities){
+        std::cout << orasi.getNume()  << ",";
+    }
+    std::cout << std::endl;
+    std::cout << "Orasul cu cea mai mare populatie este:";
+
+    Oras city1 = cities[0];
+    Oras city2 = cities[1];
+    Oras city3 = cities[2];
+
+    auto oras_max = Oras::findCityWithHighestPopulation(city1, city2, city3);
+
+    return oras_max.getNume();
 }
 
 void Joc::joaca(Joc& joc) {
@@ -196,7 +223,16 @@ void Joc::joaca(Joc& joc) {
                     }
                 }
             }
-            int scor = Jucator::getScor();
+            unsigned long scor = Jucator::getScor();
+            unsigned long pnct_max = 10*nrr;
+            if (scor == pnct_max)
+            {
+                std::string raspuns_c = Joc::bonus(cont_jucat);
+                std::string raspuns;
+                std::cin >> raspuns;
+                if(raspuns == raspuns_c)
+                    Jucator::cresteScor(20);
+            }
             std::cout << "Scorul lui " << nume << " este " << scor << std::endl;
         }
     } catch (const exceptie_lista_tari_goala& e) {

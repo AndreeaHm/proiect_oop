@@ -19,7 +19,10 @@ public:
     ~Oras();
     friend std::ostream& operator<<(std::ostream& os, const Oras& oras);
     [[nodiscard]] const std::string& getNume() const;
-    //[[nodiscard]] int getPopulation() const;
+    [[nodiscard]] int getPopulation() const;
+
+    template <typename T>
+    static T findCityWithHighestPopulation(const T& city1, const T& city2, const T& city3);
 };
 
 #endif //PRJCT_OOP_ORAS_H

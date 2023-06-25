@@ -23,6 +23,17 @@ const std::string& Oras::getNume() const {
     return nume_oras;
 }
 
-/*int Oras::getPopulation() const {
+int Oras::getPopulation() const {
     return population;
-}*/
+}
+
+template <typename T>
+T Oras::findCityWithHighestPopulation(const T& city1, const T& city2, const T& city3) {
+    if (city1.getPopulation() >= city2.getPopulation() && city1.getPopulation() >= city3.getPopulation()) {
+        return city1;
+    } else if (city2.getPopulation() >= city1.getPopulation() && city2.getPopulation() >= city3.getPopulation()) {
+        return city2;
+    } else {
+        return city3;
+    }
+}
