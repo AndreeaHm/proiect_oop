@@ -13,16 +13,18 @@
 #include "tara.h"
 #include "jucator.h"
 #include "continent.h"
+#include "gamesub.h"
 
 class Joc {
     std::vector<Jucator> juc;
     std::vector<std::string> raspunsuri;
     std::vector<Continent> continente;
+    static GameSubject* gameSubject;
 
 public:
     Joc();
 
-    Joc(const std::vector<Jucator> &juc_, const std::vector<std::string> &raspunsuri_, const std::vector<Continent> &continente_);
+    Joc(const std::vector<std::string> &raspunsuri_, const std::vector<Continent> &continente_);
 
     [[maybe_unused]] Joc(const Joc &other);
 
@@ -37,6 +39,8 @@ public:
     void adauga_jucator(const Jucator &jucator);
 
     void adaugaContinent(const Continent& continentu);
+
+    static void setGameSubject(GameSubject* subject);
 
     static void joaca(Joc &joc);
 

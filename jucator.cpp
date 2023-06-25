@@ -4,7 +4,7 @@
 
 #include "jucator.h"
 
-int Jucator::scor = 0; // Static attribute initialization
+int Jucator::scor = 0;
 
 Jucator::Jucator(const std::string& numejuc_, int nr_rundejuc_, int nr_joc_, int nivel_dific_)
         : Entitate(numejuc_), nr_runde(nr_rundejuc_), nr_joc(nr_joc_), nivel_dific(nivel_dific_) {}
@@ -27,8 +27,8 @@ int Jucator::getScor() {
     return scor;
 }
 
-void Jucator::crestere_scor(int pnct) {
-    scor += pnct;
+void Jucator::update(int score) {
+    scor = score;
 }
 
 int Jucator::getNrRunde() const {
@@ -41,6 +41,11 @@ int Jucator::getNrJoc() const {
 
 int Jucator::getNivelDific() const {
     return nivel_dific;
+}
+
+int Jucator::cresteScor(int pnct) {
+    scor += pnct;
+    return scor;
 }
 
 Jucator& Jucator::operator=(const Jucator& other) {

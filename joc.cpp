@@ -8,10 +8,12 @@
 #include <iostream>
 //#include <algorithm>
 
+GameSubject* Joc::gameSubject = nullptr;
+
 Joc::Joc() = default;
 
-Joc::Joc(const std::vector<Jucator>& juc_, const std::vector<std::string>& raspunsuri_, const std::vector<Continent>& continente_)
-        : juc(juc_), raspunsuri(raspunsuri_), continente(continente_) {}
+Joc::Joc(const std::vector<std::string>& raspunsuri_, const std::vector<Continent>& continente_)
+        : raspunsuri(raspunsuri_), continente(continente_) {}
 
 [[maybe_unused]] Joc::Joc(const Joc& other) = default;
 
@@ -56,6 +58,10 @@ void Joc::adauga_jucator(const Jucator &jucator) {
 void Joc::adaugaContinent(const Continent& continentu) {
     auto newContinent = Continent(continentu);
     continente.push_back(newContinent);
+}
+
+void Joc::setGameSubject(GameSubject* subject) {
+    gameSubject = subject;
 }
 
 void Joc::joaca(Joc& joc) {
@@ -112,7 +118,8 @@ void Joc::joaca(Joc& joc) {
 
                     if (raspuns == capitala) {
                         std::cout << "Felicitari, " << nume << "! Ai ghicit capitala tarii " << tara << "." << std::endl;
-                        Jucator::crestere_scor(10);
+                        Jucator::cresteScor(10);
+                        gameSubject->notifyObservers(Jucator::getScor());
                     } else {
                         std::cout << "Imi pare rau, " << nume << ", dar capitala tarii " << tara << " este " << capitala
                                   << "." << std::endl;
@@ -139,7 +146,8 @@ void Joc::joaca(Joc& joc) {
                     std::cin >> raspuns;
                     if (raspuns == nume_tara_curenta) {
                         std::cout << "Felicitari, " << nume << "! Ai nimerit tara " << nume_tara_curenta << "." << std::endl;
-                        Jucator::crestere_scor(10);
+                        Jucator::cresteScor(10);
+                        gameSubject->notifyObservers(Jucator::getScor());
                     } else {
                         std::cout << "Imi pare rau, " << nume << ", dar tara corecta este " << nume_tara_curenta << "." << std::endl;
                     }
@@ -172,6 +180,8 @@ void Joc::joaca(Joc& joc) {
                             }
                         }
                         std::cout << "" << std::endl;
+                        Jucator::cresteScor(10);
+                        gameSubject->notifyObservers(Jucator::getScor());
                     }
                     else {
                         std::cout << "Imi pare rau, " << nume << ", dar raspunsul corect este " << raspuns_corect << "." << std::endl;

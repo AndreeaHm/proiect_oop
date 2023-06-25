@@ -5,7 +5,13 @@
 #include <iostream>
 #include <string>
 
-class Jucator : public Entitate {
+class Observer {
+public:
+    virtual void update(int score) = 0;
+};
+
+
+class Jucator : public Entitate, public Observer {
     static int scor;
     int nr_runde;
     int nr_joc;
@@ -19,10 +25,11 @@ public:
     friend std::ostream& operator<<(std::ostream& os, const Jucator& jucator);
 
     static int getScor();
-    static void crestere_scor(int pnct);
     [[nodiscard]] int getNrRunde() const;
     [[nodiscard]] int getNrJoc() const;
     [[nodiscard]] int getNivelDific() const;
+    static int cresteScor(int pnct);
+    void update(int score) override;
 
     Jucator& operator=(const Jucator& other);
 };
