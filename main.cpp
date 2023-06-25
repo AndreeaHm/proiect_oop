@@ -19,7 +19,6 @@ int main() {
     Jucator p3("Florica", 3, 1, 1);
 
     std::vector<Tara*> tari;
-    std::vector<Jucator> jucatori;
     std::vector<std::string> raspunsurile;
     std::vector<Continent> continentele;
 
