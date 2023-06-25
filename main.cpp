@@ -14,7 +14,7 @@ int main() {
     std::ifstream f("europa.in");
     std::random_device rd;
     [[maybe_unused]] std::mt19937 g(rd());
-    Jucator p1("Ion", 3, 2, 1);
+    Jucator p1("Ion", 3, 3, 1);
     Jucator p2("Ana", 4, 2, 1);
     Jucator p3("Florica", 3, 1, 1);
 

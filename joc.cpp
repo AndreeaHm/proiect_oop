@@ -91,11 +91,11 @@ void Joc::joaca(Joc& joc) {
             std::string nume = juctr.getNume();
             std::cout << "Jucatorul " << nume << std::endl;
             int jocul_ales = juctr.getNrJoc();
-            unsigned long long nrr = juctr.getNrRunde();
+            unsigned long nrr = juctr.getNrRunde();
             if (jocul_ales == 1) {
-                for (unsigned long long i = 0; i < nrr; i++) {
-                    unsigned long long random_index = i;
-                    unsigned long long random_r = random_rsp[i];
+                for (unsigned long i = 0; i < nrr; i++) {
+                    unsigned long random_index = i;
+                    unsigned long random_r = random_rsp[i];
 
                     if (random_index >= tarajuc.size()) {
                         throw exceptie_index_depaseste("Indexul aleator depaseste dimensiunea listei de tari!");
@@ -144,6 +144,46 @@ void Joc::joaca(Joc& joc) {
                         std::cout << "Imi pare rau, " << nume << ", dar tara corecta este " << nume_tara_curenta << "." << std::endl;
                     }
                     std::cout << std::endl;
+                }
+            } else if (jocul_ales == 3){
+                for( unsigned long i = 0; i < nrr; i++){
+                    if (i >= tarajuc.size())
+                        break;
+                    unsigned long random_index = i;
+                    Tara* tara_curenta = tarajuc[random_index]->clone();
+                    std::string nume_tara_curenta = tara_curenta->getNume();
+                    std::cout << "Tara " << nume_tara_curenta << " este locked (nu are acces la mare)?" << std::endl;
+                    std::cout << "(D/N) Raspuns: ";
+                    std::string raspuns;
+                    std::cin >> raspuns;
+                    std::string raspuns_corect;
+                    if (tara_curenta->isLocked()) {
+                        raspuns_corect = "D";
+                    } else if (tara_curenta->hasAccesstoSea()) {
+                        raspuns_corect = "N";
+                    }
+                    if (raspuns == raspuns_corect) {
+                        std::cout << "Felicitari " << nume << "! Ai nimerit raspunsul." << std::endl;
+                        if (tara_curenta->hasAccesstoSea()) {
+                            auto* tp = dynamic_cast<Tara_apa*>(tara_curenta);
+                            if (tp) {
+                                std::string marea = tp->getNumeMare();
+                                std::cout << nume_tara_curenta << " are acces la " << marea << "." << std::endl;
+                            }
+                        }
+                        std::cout << "" << std::endl;
+                    }
+                    else {
+                        std::cout << "Imi pare rau, " << nume << ", dar raspunsul corect este " << raspuns_corect << "." << std::endl;
+                        if (tara_curenta->hasAccesstoSea()) {
+                            auto* tp = dynamic_cast<Tara_apa*>(tara_curenta);
+                            if (tp) {
+                                std::string marea = tp->getNumeMare();
+                                std::cout << nume_tara_curenta << " are acces la " << marea << "." << std::endl;
+                            }
+                        }
+                        std::cout << "" << std::endl;
+                    }
                 }
             }
             int scor = Jucator::getScor();

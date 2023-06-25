@@ -81,6 +81,23 @@ Tara_locked* Tara_locked::clone() const {
 
 Tara_locked::Tara_locked(const std::string& nt, const std::string& nc, const std::vector<Oras>& orase_) : Tara(nt, nc, orase_) {}
 
+bool Tara_locked::isLocked() const {
+    return true;
+}
+
+bool Tara_locked::hasAccesstoSea() const {
+    return false;
+}
+
+bool Tara_apa::isLocked() const {
+    return false;
+}
+
+bool Tara_apa::hasAccesstoSea() const {
+    return true;
+}
+
+
 void Tara_apa::afisare() {
     Tara::afisare();
     std::cout << "Nume mare: " << nume_mare << std::endl;
@@ -91,3 +108,7 @@ Tara_apa* Tara_apa::clone() const{
 }
 
 Tara_apa::Tara_apa(const std::string& nt, const std::string& nc, const std::vector<Oras>& orase_, const std::string& nume_mare_) : Tara(nt, nc, orase_), nume_mare(nume_mare_) {}
+
+const std::string& Tara_apa::getNumeMare() const {
+    return nume_mare;
+}

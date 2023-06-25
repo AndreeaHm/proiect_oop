@@ -14,13 +14,13 @@ protected:
     std::vector<Oras> orase;
 
 public:
-    Tara(std::string  nume_tara_, std::string  capitalatara_, const std::vector<Oras>& orase_);
+    Tara(std::string nume_tara_, std::string capitalatara_, const std::vector<Oras>& orase_);
 
     [[maybe_unused]] Tara(const Tara& other);
 
     Tara();
 
-    Tara& operator = (const Tara& other);
+    Tara& operator=(const Tara& other);
     virtual ~Tara();
     friend std::ostream& operator<<(std::ostream& os, const Tara& tara);
 
@@ -34,23 +34,26 @@ public:
 
     [[maybe_unused]] [[maybe_unused]] void swap(Tara& other);
     virtual void afisare() = 0;
-
-
+    [[nodiscard]] virtual bool isLocked() const = 0;
+    [[nodiscard]] virtual bool hasAccesstoSea() const = 0;
 };
 
-class Tara_locked: public Tara{
+class Tara_locked : public Tara {
 public:
     Tara_locked(const std::string& nt, const std::string& nc, const std::vector<Oras>& orase_);
 
     void afisare() override;
 
+    [[nodiscard]] bool isLocked() const override;
+
+    [[nodiscard]] bool hasAccesstoSea() const override;
+
     [[nodiscard]] Tara_locked* clone() const override;
 
     ~Tara_locked() override = default;
-
 };
 
-class Tara_apa: public Tara{
+class Tara_apa : public Tara {
     std::string nume_mare;
 public:
     Tara_apa(const std::string& nt, const std::string& nc, const std::vector<Oras>& orase_, const std::string& nume_mare_);
@@ -58,6 +61,12 @@ public:
     void afisare() override;
 
     [[nodiscard]] Tara_apa* clone() const override;
+
+    [[nodiscard]] bool isLocked() const override;
+
+    [[nodiscard]] bool hasAccesstoSea() const override;
+
+    const std::string& getNumeMare() const;
 
     ~Tara_apa() override = default;
 };
