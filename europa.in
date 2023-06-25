@@ -1,5 +1,4 @@
 2
-Baltica
 Rusia
 Moscova
 Sankt_Petersburg
@@ -8,8 +7,8 @@ Novosibirsk
 1473737
 Ekaterinburg
 1350136
+Baltica
 2
-Nordului
 Germania
 Berlin
 Munchen
@@ -18,8 +17,8 @@ Hamburg
 1788000
 Frankfurt
 796000
-2
 Nordului
+2
 Marea_Britanie
 Londra
 Manchester
@@ -28,8 +27,8 @@ Liverpool
 496784
 Birmingham
 1144900
+Nordului
 2
-Mediterana
 Franta
 Paris
 Lyon
@@ -38,8 +37,8 @@ Toulouse
 471941
 Marsilia
 861635
+Mediterana
 2
-Adriatica
 Italia
 Roma
 Milano
@@ -48,8 +47,8 @@ Pisa
 90488
 Venetia
 261905
+Adriatica
 2
-Mediterana
 Spania
 Madrid
 Barcelona
@@ -58,8 +57,8 @@ Valencia
 791413
 Marbella
 141463
+Mediterana
 2
-Neagra
 Ucraina
 Kiev
 Odesa
@@ -68,8 +67,8 @@ Zaporojie
 746749
 Nikolaiev
 486267
+Neagra
 2
-Baltica
 Polonia
 Varsovia
 Cracovia
@@ -78,8 +77,8 @@ Lublin
 342039
 Poznan
 540365
+Baltica
 2
-Neagra
 Romania
 Bucuresti
 Constanta
@@ -88,8 +87,8 @@ Brasov
 382896
 Craiova
 269506
+Neagra
 2
-Nordului
 Olanda
 Amsterdam
 Rotterdam
@@ -98,8 +97,8 @@ Haga
 514861
 Eindhoven
 223209
-2
 Nordului
+2
 Belgia
 Bruxelles
 Bruges
@@ -108,6 +107,7 @@ Gent
 262219
 Anvers
 506922
+Nordului
 1
 Cehia
 Praga
@@ -117,8 +117,8 @@ Liberec
 104163
 Ostrava
 289629
+nimic
 2
-Egee
 Grecia
 Atena
 Salonic
@@ -127,8 +127,8 @@ Ioannina
 100000
 Heraklion
 137711
+Egee
 2
-Atlantic
 Portugalia
 Lisabona
 Porto
@@ -137,8 +137,8 @@ Setubal
 118166
 Coimbra
 150000
+Atlantic
 2
-Baltica
 Suedia
 Stockholm
 Lund
@@ -147,6 +147,7 @@ Goteborg
 489787
 Malmo
 344166
+Baltica
 1
 Ungaria
 Budapesta
@@ -156,6 +157,7 @@ Eger
 53876
 Debretin
 202520
+nimic
 1
 Belarus
 Minsk
@@ -165,6 +167,7 @@ Brest
 343985
 Pinsk
 138202
+nimic
 1
 Austria
 Viena
@@ -174,6 +177,7 @@ Graz
 248146
 Salzburg
 152367
+nimic
 1
 Serbia
 Belgrad
@@ -183,6 +187,7 @@ Varset
 35701
 Subatica
 103985
+nimic
 1
 Elvetia
 Berna
@@ -192,8 +197,8 @@ Zurich
 402762
 Basel
 171017
+nimic
 2
-Neagra
 Bulgaria
 Sofia
 Sozopol
@@ -202,8 +207,8 @@ Burgas
 202766
 Varna
 335177
+Neagra
 2
-Nordului
 Danemarca
 Copenhaga
 Aalborg
@@ -212,8 +217,8 @@ Odense
 200703
 Esbjerg
 115932
+Nordului
 2
-Baltica
 Finlanda
 Helsinki
 Turku
@@ -222,6 +227,7 @@ Oulu
 199526
 Vaasa
 66960
+Baltica
 1
 Slovacia
 Bratislava
@@ -231,8 +237,8 @@ Nitra
 77603
 Presov
 89872
+nimic
 2
-Nordului
 Norvegia
 Oslo
 Trondheim
@@ -241,8 +247,8 @@ Bergen
 271949
 Stavanger
 130754
+Nordului
 2
-Atlantic
 Irlanda
 Dublin
 Cork
@@ -251,8 +257,8 @@ Galway
 79934
 Waterford
 53504
+Atlantic
 2
-Adriatica
 Croatia
 Zagreb
 Dubrovnik
@@ -261,6 +267,7 @@ Split
 178102
 Pula
 57460
+Adriatica
 1
 Moldova
 Chisinau
@@ -270,6 +277,7 @@ Orhei
 21065
 Ungheni
 30804
+nimic
 1
 Bosnia_si_Hertegovina
 Sarajevo
@@ -279,8 +287,8 @@ Doboj
 77223
 Tuzla
 120441
+nimic
 2
-Ionica
 Albania
 Tirana
 Durres
@@ -289,8 +297,8 @@ Saranda
 41000
 Elbasan
 100000
+Ionica
 2
-Baltica
 Lituania
 Vilnius
 Kaunas
@@ -299,6 +307,7 @@ Klaipeda
 152818
 Utena
 25397
+Baltica
 1
 Macedonia_de_Nord
 Skopje
@@ -308,8 +317,8 @@ Prilep
 79834
 Gostivar
 35847
+nimic
 2
-Adriatica
 Slovenia
 Ljubljana
 Maribor
@@ -318,8 +327,8 @@ Celje
 37872
 Koper
 25753
+Adriatica
 2
-Baltica
 Letonia
 Riga
 Daugavpils
@@ -328,8 +337,8 @@ Liepaja
 76535
 Jelgava
 66088
-2
 Baltica
+2
 Estonia
 Tallinn
 Tartu
@@ -338,8 +347,8 @@ Narva
 57130
 Parnu
 39620
+Baltica
 2
-Adriatica
 Muntenegru
 Podgorita
 Niksic
@@ -348,8 +357,8 @@ Pljevlja
 36918
 Kotor
 13510
+Adriatica
 2
-Atlantic
 Islanda
 Reykjavik
 Kopavogur
@@ -358,3 +367,4 @@ Akureyri
 18191
 Akranes
 7411
+Atlantic
